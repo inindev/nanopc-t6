@@ -1,7 +1,7 @@
-From 107f638bacdd93737612e426fcdceb3c00704518 Mon Sep 17 00:00:00 2001
+From f791cc350639d06af3e05ae0ab1b883755957847 Mon Sep 17 00:00:00 2001
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 Date: Fri, 7 Jul 2023 19:28:22 +0300
-Subject: [PATCH 04/78] arm64: dts: rockchip: Update sound card label on
+Subject: [PATCH 04/79] arm64: dts: rockchip: Update sound card label on
  rk3588-rock-5b
 
 The audio-graph-card driver uses the 'label' property to register the

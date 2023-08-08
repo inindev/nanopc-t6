@@ -1,7 +1,7 @@
-From 46065e8145d8cec89df760a058683a20bcd7c2d8 Mon Sep 17 00:00:00 2001
+From 12a0da0d5056217ed519e0c6c654d3ff4b675e17 Mon Sep 17 00:00:00 2001
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 Date: Mon, 10 Jul 2023 18:52:24 +0200
-Subject: [PATCH 13/78] arm64: dts: rockchip: add I2C EEPROM to rock-5a
+Subject: [PATCH 13/79] arm64: dts: rockchip: add I2C EEPROM to rock-5a
 
 Add the I2C EEPROM to the Rock 5A DT.
 

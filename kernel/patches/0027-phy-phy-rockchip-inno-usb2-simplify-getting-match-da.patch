@@ -1,7 +1,7 @@
-From cd805a88479c44f387f0e474ac258ad86dda36d9 Mon Sep 17 00:00:00 2001
+From 51ba2c26905d99105165f3b84a42e4eeaadaf83a Mon Sep 17 00:00:00 2001
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 Date: Mon, 3 Apr 2023 22:01:14 +0200
-Subject: [PATCH 27/78] phy: phy-rockchip-inno-usb2: simplify getting match
+Subject: [PATCH 27/79] phy: phy-rockchip-inno-usb2: simplify getting match
  data
 
 Simplify the code by directly getting the match data via

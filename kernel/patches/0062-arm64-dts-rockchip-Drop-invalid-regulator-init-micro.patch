@@ -1,7 +1,7 @@
-From 8317610f848b208440c4e090cb0e54ff97146dd4 Mon Sep 17 00:00:00 2001
+From 6638673ba6f8e7556f1f0e4265af19b5fed9a6bf Mon Sep 17 00:00:00 2001
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 Date: Fri, 7 Jul 2023 19:22:17 +0300
-Subject: [PATCH 62/78] arm64: dts: rockchip: Drop invalid
+Subject: [PATCH 62/79] arm64: dts: rockchip: Drop invalid
  regulator-init-microvolt property
 
 The 'regulator-init-microvolt' property is not currently supported by

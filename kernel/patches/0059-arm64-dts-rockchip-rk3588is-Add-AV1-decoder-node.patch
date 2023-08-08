@@ -1,7 +1,7 @@
-From f87da00649d0036cbac946a00c525e4ba70e13ed Mon Sep 17 00:00:00 2001
+From 22ba88d996e5a82fb0f4a9b2b5064b865d8fb5a4 Mon Sep 17 00:00:00 2001
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 Date: Wed, 2 Nov 2022 14:31:56 +0100
-Subject: [PATCH 59/78] arm64: dts: rockchip: rk3588is: Add AV1 decoder node
+Subject: [PATCH 59/79] arm64: dts: rockchip: rk3588is: Add AV1 decoder node
 
 Add node for AV1 video decoder.
 

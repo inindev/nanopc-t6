@@ -1,7 +1,7 @@
-From 8aef32d4a7f182cdcf02ffbd73fa38423051834d Mon Sep 17 00:00:00 2001
+From 0bb579cf37d45e5432bc2ee1c4de9dbbaca8456b Mon Sep 17 00:00:00 2001
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 Date: Fri, 21 Jul 2023 15:47:00 +0200
-Subject: [PATCH 70/78] arm64: dts: rockchip: rk3588-evb1: add ADC buttons
+Subject: [PATCH 70/79] arm64: dts: rockchip: rk3588-evb1: add ADC buttons
 
 The Rockchip EVB1 has a couple of buttons connected via an ADC
 line. Let's add them to its devicetree.

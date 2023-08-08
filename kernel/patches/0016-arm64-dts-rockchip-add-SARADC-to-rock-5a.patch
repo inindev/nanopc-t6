@@ -1,7 +1,7 @@
-From e79d2eb5be2e724cc63481f87639faf124081e86 Mon Sep 17 00:00:00 2001
+From 9c385b944dd586fcd7bbafef4deb7a98375ed431 Mon Sep 17 00:00:00 2001
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 Date: Mon, 10 Jul 2023 18:52:27 +0200
-Subject: [PATCH 16/78] arm64: dts: rockchip: add SARADC to rock-5a
+Subject: [PATCH 16/79] arm64: dts: rockchip: add SARADC to rock-5a
 
 Enable ADC support for Rock 5A, which has the following ADC channels:
 

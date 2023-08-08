@@ -1,7 +1,7 @@
-From 8383da70a2f067d89fb933c8c5065d3462c1e785 Mon Sep 17 00:00:00 2001
+From 2991704b4499d0a89e0683b65c2c163ac3b9cd85 Mon Sep 17 00:00:00 2001
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 Date: Wed, 19 Jul 2023 15:56:42 +0200
-Subject: [PATCH 50/78] arm64: dts: rockchip: rk3588-rock5b: add USB3 host
+Subject: [PATCH 50/79] arm64: dts: rockchip: rk3588-rock5b: add USB3 host
 
 Enable USB3 host controller for the Radxa ROCK 5 Model B. This adds
 USB3 for the upper USB3 port (the one further away from the PCB).

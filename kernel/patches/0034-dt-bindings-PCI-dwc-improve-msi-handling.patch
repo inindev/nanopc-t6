@@ -1,7 +1,7 @@
-From ac4fb2a0ad46755989edfa57708efce742694c37 Mon Sep 17 00:00:00 2001
+From 291d5f3e99d48d6f0b840260add1927c8af20a02 Mon Sep 17 00:00:00 2001
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 Date: Sat, 15 Jul 2023 00:37:44 +0200
-Subject: [PATCH 34/78] dt-bindings: PCI: dwc: improve msi handling
+Subject: [PATCH 34/79] dt-bindings: PCI: dwc: improve msi handling
 
 Allow missing "msi" interrupt, iff the node has a "msi-map" property.
 

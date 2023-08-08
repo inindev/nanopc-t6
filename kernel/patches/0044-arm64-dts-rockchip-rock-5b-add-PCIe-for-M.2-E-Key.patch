@@ -1,7 +1,7 @@
-From 1461e4300e07e8e89824d28e33a8a5ce88be0adb Mon Sep 17 00:00:00 2001
+From f249e839b7d44d2c4e45e25ab47d86a7e654234a Mon Sep 17 00:00:00 2001
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 Date: Fri, 21 Jul 2023 17:43:58 +0200
-Subject: [PATCH 44/78] arm64: dts: rockchip: rock-5b: add PCIe for M.2 E-Key
+Subject: [PATCH 44/79] arm64: dts: rockchip: rock-5b: add PCIe for M.2 E-Key
 
 Enable PCIe2_0 controller and its voltage supply, which is routed
 to the M.2 E-Key on the upper side of the Radxa Rock 5B.

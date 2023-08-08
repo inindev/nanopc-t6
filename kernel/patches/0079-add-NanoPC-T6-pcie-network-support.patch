@@ -1,0 +1,93 @@
+From 4725d947ec84750f9017ec86e890f9b489a5bb5b Mon Sep 17 00:00:00 2001
+From: John Clark <inindev@gmail.com>
+Date: Tue, 8 Aug 2023 23:27:20 +0000
+Subject: [PATCH 79/79] add NanoPC T6 pcie network support
+
+Signed-off-by: John Clark <inindev@gmail.com>
+---
+ .../boot/dts/rockchip/rk3588-nanopc-t6.dts    | 48 +++++++++++++++++++
+ 1 file changed, 48 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dts b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dts
+index fc4274fbc..b721beeca 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dts
+@@ -116,6 +116,16 @@ vcc_1v1_nldo_s3: vcc-1v1-nldo-s3-regulator {
+ 		vin-supply = <&vcc4v0_sys>;
+ 	};
+ 
++	vcc_3v3_pcie20: vcc3v3-pcie20-regulator {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc_3v3_pcie20";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <3300000>;
++		regulator-max-microvolt = <3300000>;
++		vin-supply = <&vcc_3v3_s3>;
++	};
++
+ 	vbus5v0_typec: vbus5v0-typec {
+ 		compatible = "regulator-fixed";
+ 		enable-active-high;
+@@ -141,6 +151,18 @@ vcc3v3_pcie30: vcc3v3-pcie30 {
+ 	};
+ };
+ 
++&combphy0_ps {
++	status = "okay";
++};
++
++&combphy1_ps {
++	status = "okay";
++};
++
++&combphy2_psu {
++	status = "okay";
++};
++
+ &cpu_l0 {
+ 	cpu-supply = <&vdd_cpu_lit_s0>;
+ };
+@@ -394,6 +416,22 @@ i2s0_8ch_p0_0: endpoint {
+ 	};
+ };
+ 
++&pcie2x1l0 {
++	reset-gpios = <&gpio4 RK_PB3 GPIO_ACTIVE_HIGH>;
++	vpcie3v3-supply = <&vcc_3v3_pcie20>;
++	pinctrl-names = "default";
++	pinctrl-0 = <&pcie2_0_rst>;
++	status = "okay";
++};
++
++&pcie2x1l2 {
++	reset-gpios = <&gpio4 RK_PA4 GPIO_ACTIVE_HIGH>;
++	vpcie3v3-supply = <&vcc_3v3_pcie20>;
++	pinctrl-names = "default";
++	pinctrl-0 = <&pcie2_2_rst>;
++	status = "okay";
++};
++
+ &pcie30phy {
+ 	status = "okay";
+ };
+@@ -433,6 +471,16 @@ pcie_m2_0_pwren: pcie-m20-pwren {
+ 		};
+ 	};
+ 
++	pcie2 {
++		pcie2_0_rst: pcie2-0-rst {
++			rockchip,pins = <4 RK_PB3 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++
++		pcie2_2_rst: pcie2-2-rst {
++			rockchip,pins = <4 RK_PA4 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++
+ 	usb {
+ 		typec5v_pwren: typec5v-pwren {
+ 			rockchip,pins = <1 RK_PD2 RK_FUNC_GPIO &pcfg_pull_none>;
+-- 
+2.40.1
+

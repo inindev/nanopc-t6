@@ -1,7 +1,7 @@
-From f90972ed634038f95bd5fb903bb5e49ee4f07824 Mon Sep 17 00:00:00 2001
+From 5fc6e99643122efdd5d52fdfd774eba59259e430 Mon Sep 17 00:00:00 2001
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 Date: Thu, 12 Jan 2023 19:23:27 +0100
-Subject: [PATCH 30/78] arm64: dts: rockchip: rk3588-evb1: add USB2
+Subject: [PATCH 30/79] arm64: dts: rockchip: rk3588-evb1: add USB2
 
 Enable USB2 (EHCI and OCHI mode) support for the Rockchip RK3588 EVB1.
 

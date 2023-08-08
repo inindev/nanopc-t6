@@ -1,7 +1,7 @@
-From 70cb63cfaf704ad03e02fd4af4073a8647a0e434 Mon Sep 17 00:00:00 2001
+From e3bafb2460c20ae72be4fd94febe65b3a23ece9e Mon Sep 17 00:00:00 2001
 From: "@" <@>
 Date: Mon, 7 Aug 2023 02:43:51 +0000
-Subject: [PATCH 2/2] Add the NanoPC T6, a single board computer from
+Subject: [PATCH 2/3] Add the NanoPC T6, a single board computer from
  FriendlyElec based on the RK3588.
 
 Initial device tree supports debug UART, SD, eMMC, PCIe 3, PMIC,

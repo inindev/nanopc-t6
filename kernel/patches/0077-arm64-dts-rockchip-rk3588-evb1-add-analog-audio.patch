@@ -1,7 +1,7 @@
-From 97a8f12694f8f2e9b2ec3128280721b88f967127 Mon Sep 17 00:00:00 2001
+From 9cc6b73d50cecfd36991152a6bab07388fb1366c Mon Sep 17 00:00:00 2001
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 Date: Fri, 21 Jul 2023 16:59:40 +0200
-Subject: [PATCH 77/78] arm64: dts: rockchip: rk3588-evb1: add analog audio
+Subject: [PATCH 77/79] arm64: dts: rockchip: rk3588-evb1: add analog audio
 
 Add support for the EVB1 analog audio to its devicetree.
 

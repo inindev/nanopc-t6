@@ -1,7 +1,7 @@
-From fc5c4a18975a5f7980ba06140dd66d42af1a42d9 Mon Sep 17 00:00:00 2001
+From 4b2f7db64cc937b76edd3d43a7a38140eb7a26fd Mon Sep 17 00:00:00 2001
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 Date: Tue, 13 Jun 2023 16:45:05 +0200
-Subject: [PATCH 58/78] clk: rockchip: rk3588: fix pclk_vo0grf and pclk_vo1grf
+Subject: [PATCH 58/79] clk: rockchip: rk3588: fix pclk_vo0grf and pclk_vo1grf
 
 Currently pclk_vo1grf is not exposed, but it should be referenced
 from the vo1_grf syscon, which needs it enabled. That syscon will

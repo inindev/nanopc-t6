@@ -1,7 +1,7 @@
-From 262780266106c5f3ab1a556270eb08ae381ddedf Mon Sep 17 00:00:00 2001
+From 1018abfc41ee6cea98ddcb512a7cdc6cffb49599 Mon Sep 17 00:00:00 2001
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 Date: Mon, 10 Jul 2023 18:52:23 +0200
-Subject: [PATCH 12/78] arm64: dts: rockchip: add analog audio to rock-5a
+Subject: [PATCH 12/79] arm64: dts: rockchip: add analog audio to rock-5a
 
 Add analog audio support based on the Everest Semi ES8316 codec.
 

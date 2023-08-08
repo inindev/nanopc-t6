@@ -1,7 +1,7 @@
-From 48c61bb3054b1d31e7308eb95683073007be0813 Mon Sep 17 00:00:00 2001
+From eb39bb2998ea988883676b5053fae9fa1a4a1fcd Mon Sep 17 00:00:00 2001
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 Date: Thu, 20 Jul 2023 18:05:56 +0200
-Subject: [PATCH 47/78] dt-bindings: usb: add rk3588 compatible to
+Subject: [PATCH 47/79] dt-bindings: usb: add rk3588 compatible to
  rockchip,dwc3
 
 RK3588 has three DWC3 controllers. Two of them are fully functional in

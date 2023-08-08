@@ -1,7 +1,7 @@
-From 62870507ebd4b56275b88e2f7031340adaa7582c Mon Sep 17 00:00:00 2001
+From 9e925e8d49cccdf9042abfad8300ac7dc7109e15 Mon Sep 17 00:00:00 2001
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 Date: Tue, 25 Jul 2023 18:49:43 +0200
-Subject: [PATCH 76/78] dt-bindings: es8328: convert to DT schema format
+Subject: [PATCH 76/79] dt-bindings: es8328: convert to DT schema format
 
 Convert the binding to DT schema format.
 
