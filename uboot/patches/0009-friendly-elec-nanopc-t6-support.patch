@@ -1,4 +1,4 @@
-From e6d0e398646fa45095df677c9bb298543f996937 Mon Sep 17 00:00:00 2001
+From a4f2a566a884c6a37edd00cb7eece605cc998d7f Mon Sep 17 00:00:00 2001
 From: John Clark <inindev@gmail.com>
 Date: Mon, 7 Aug 2023 04:04:40 +0000
 Subject: [PATCH 9/9] friendly elec nanopc-t6 support
@@ -7,9 +7,9 @@ Signed-off-by: John Clark <inindev@gmail.com>
 ---
  arch/arm/dts/Makefile                     |   1 +
  arch/arm/dts/rk3588-nanopc-t6-u-boot.dtsi |  42 +
- arch/arm/dts/rk3588-nanopc-t6.dts         | 893 ++++++++++++++++++++++
+ arch/arm/dts/rk3588-nanopc-t6.dts         | 888 ++++++++++++++++++++++
  configs/nanopc-t6-rk3588_defconfig        | 121 +++
- 4 files changed, 1057 insertions(+)
+ 4 files changed, 1052 insertions(+)
  create mode 100644 arch/arm/dts/rk3588-nanopc-t6-u-boot.dtsi
  create mode 100644 arch/arm/dts/rk3588-nanopc-t6.dts
  create mode 100644 configs/nanopc-t6-rk3588_defconfig
@@ -76,10 +76,10 @@ index 0000000000..f899276907
 +};
 diff --git a/arch/arm/dts/rk3588-nanopc-t6.dts b/arch/arm/dts/rk3588-nanopc-t6.dts
 new file mode 100644
-index 0000000000..b721beecaa
+index 0000000000..e60a8fe9dc
 --- /dev/null
 +++ b/arch/arm/dts/rk3588-nanopc-t6.dts
-@@ -0,0 +1,893 @@
+@@ -0,0 +1,888 @@
 +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
 +/*
 + * Copyright (c) 2021 Rockchip Electronics Co., Ltd.
@@ -109,7 +109,6 @@ index 0000000000..b721beecaa
 +	};
 +
 +	sound {
-+		status = "okay";
 +		compatible = "simple-audio-card";
 +		pinctrl-names = "default";
 +		pinctrl-0 = <&hp_det>;
@@ -208,7 +207,7 @@ index 0000000000..b721beecaa
 +		vin-supply = <&vcc_3v3_s3>;
 +	};
 +
-+	vbus5v0_typec: vbus5v0-typec {
++	vbus5v0_typec: vbus5v0-typec-regulator {
 +		compatible = "regulator-fixed";
 +		enable-active-high;
 +		gpio = <&gpio1 RK_PD2 GPIO_ACTIVE_HIGH>;
@@ -220,7 +219,7 @@ index 0000000000..b721beecaa
 +		vin-supply = <&vcc5v0_sys>;
 +	};
 +
-+	vcc3v3_pcie30: vcc3v3-pcie30 {
++	vcc3v3_pcie30: vcc3v3-pcie30-regulator {
 +		compatible = "regulator-fixed";
 +		enable-active-high;
 +		gpios = <&gpio2 RK_PC5 GPIO_ACTIVE_HIGH>;
@@ -436,10 +435,9 @@ index 0000000000..b721beecaa
 +			sink-pdos = <PDO_FIXED(5000, 3000, PDO_FIXED_USB_COMM)>;
 +			op-sink-microwatt = <1000000>;
 +		};
-+
 +	};
 +
-+	hym8563: hym8563@51 {
++	hym8563: rtc@51 {
 +		compatible = "haoyu,hym8563";
 +		reg = <0x51>;
 +		#clock-cells = <0>;
@@ -450,7 +448,6 @@ index 0000000000..b721beecaa
 +		interrupts = <RK_PB0 IRQ_TYPE_LEVEL_LOW>;
 +		wakeup-source;
 +	};
-+
 +};
 +
 +&i2c7 {
@@ -483,10 +480,10 @@ index 0000000000..b721beecaa
 +&i2s0_8ch {
 +	pinctrl-names = "default";
 +	pinctrl-0 = <&i2s0_lrck
-+				 &i2s0_mclk
-+				 &i2s0_sclk
-+				 &i2s0_sdi0
-+				 &i2s0_sdo0>;
++		     &i2s0_mclk
++		     &i2s0_sclk
++		     &i2s0_sdi0
++		     &i2s0_sdo0>;
 +	status = "okay";
 +
 +	i2s0_8ch_p0: port {
@@ -548,18 +545,16 @@ index 0000000000..b721beecaa
 +	};
 +
 +	pcie {
-+		pcie_m2_0_pwren: pcie-m20-pwren {
-+			rockchip,pins = <2 RK_PC5 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	pcie2 {
 +		pcie2_0_rst: pcie2-0-rst {
 +			rockchip,pins = <4 RK_PB3 RK_FUNC_GPIO &pcfg_pull_none>;
 +		};
 +
 +		pcie2_2_rst: pcie2-2-rst {
 +			rockchip,pins = <4 RK_PA4 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++
++		pcie_m2_0_pwren: pcie-m20-pwren {
++			rockchip,pins = <2 RK_PC5 RK_FUNC_GPIO &pcfg_pull_none>;
 +		};
 +	};
 +

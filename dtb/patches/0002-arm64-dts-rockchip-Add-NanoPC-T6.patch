@@ -1,8 +1,10 @@
-From e3bafb2460c20ae72be4fd94febe65b3a23ece9e Mon Sep 17 00:00:00 2001
-From: "@" <@>
-Date: Mon, 7 Aug 2023 02:43:51 +0000
-Subject: [PATCH 2/3] Add the NanoPC T6, a single board computer from
- FriendlyElec based on the RK3588.
+From 45e96eaf24f96cbf7e5c3757858d68846d421388 Mon Sep 17 00:00:00 2001
+From: Thomas McKahan <tmckahan@singleboardsolutions.com>
+Date: Wed, 9 Aug 2023 07:21:17 -0400
+Subject: [PATCH 2/3] arm64: dts: rockchip: Add NanoPC T6
+
+Add the NanoPC T6, a single board computer from FriendlyElec based on
+the RK3588.
 
 Initial device tree supports debug UART, SD, eMMC, PCIe 3, PMIC,
 and 40 pin GPIO assignments.
@@ -10,8 +12,8 @@ and 40 pin GPIO assignments.
 Signed-off-by: Thomas McKahan <tmckahan@singleboardsolutions.com>
 ---
  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
- .../boot/dts/rockchip/rk3588-nanopc-t6.dts    | 845 ++++++++++++++++++
- 2 files changed, 846 insertions(+)
+ .../boot/dts/rockchip/rk3588-nanopc-t6.dts    | 842 ++++++++++++++++++
+ 2 files changed, 843 insertions(+)
  create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dts
 
 diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
@@ -28,10 +30,10 @@ index b7fb908..5d86ad6 100644
  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-khadas-edge2.dtb
 diff --git a/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dts b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dts
 new file mode 100644
-index 0000000..fc4274f
+index 0000000..58e9b0d
 --- /dev/null
 +++ b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dts
-@@ -0,0 +1,845 @@
+@@ -0,0 +1,842 @@
 +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
 +/*
 + * Copyright (c) 2021 Rockchip Electronics Co., Ltd.
@@ -61,7 +63,6 @@ index 0000000..fc4274f
 +	};
 +
 +	sound {
-+		status = "okay";
 +		compatible = "simple-audio-card";
 +		pinctrl-names = "default";
 +		pinctrl-0 = <&hp_det>;
@@ -150,7 +151,7 @@ index 0000000..fc4274f
 +		vin-supply = <&vcc4v0_sys>;
 +	};
 +
-+	vbus5v0_typec: vbus5v0-typec {
++	vbus5v0_typec: vbus5v0-typec-regulator {
 +		compatible = "regulator-fixed";
 +		enable-active-high;
 +		gpio = <&gpio1 RK_PD2 GPIO_ACTIVE_HIGH>;
@@ -162,7 +163,7 @@ index 0000000..fc4274f
 +		vin-supply = <&vcc5v0_sys>;
 +	};
 +
-+	vcc3v3_pcie30: vcc3v3-pcie30 {
++	vcc3v3_pcie30: vcc3v3-pcie30-regulator {
 +		compatible = "regulator-fixed";
 +		enable-active-high;
 +		gpios = <&gpio2 RK_PC5 GPIO_ACTIVE_HIGH>;
@@ -366,10 +367,9 @@ index 0000000..fc4274f
 +			sink-pdos = <PDO_FIXED(5000, 3000, PDO_FIXED_USB_COMM)>;
 +			op-sink-microwatt = <1000000>;
 +		};
-+
 +	};
 +
-+	hym8563: hym8563@51 {
++	hym8563: rtc@51 {
 +		compatible = "haoyu,hym8563";
 +		reg = <0x51>;
 +		#clock-cells = <0>;
@@ -380,7 +380,6 @@ index 0000000..fc4274f
 +		interrupts = <RK_PB0 IRQ_TYPE_LEVEL_LOW>;
 +		wakeup-source;
 +	};
-+
 +};
 +
 +&i2c7 {
@@ -413,10 +412,10 @@ index 0000000..fc4274f
 +&i2s0_8ch {
 +	pinctrl-names = "default";
 +	pinctrl-0 = <&i2s0_lrck
-+				 &i2s0_mclk
-+				 &i2s0_sclk
-+				 &i2s0_sdi0
-+				 &i2s0_sdo0>;
++		     &i2s0_mclk
++		     &i2s0_sclk
++		     &i2s0_sdi0
++		     &i2s0_sdo0>;
 +	status = "okay";
 +
 +	i2s0_8ch_p0: port {
