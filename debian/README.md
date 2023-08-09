@@ -35,9 +35,8 @@ sync
 ```
 media='mmc_2g.img' # or block device '/dev/sdX'
 deb_dist='bookworm'
-hostname='rock5b-arm64'
+hostname='nanopc-t6-arm64'
 acct_uid='debian'
 acct_pass='debian'
-disable_ipv6=true
-extra_pkgs='curl, pciutils, sudo, u-boot-tools, unzip, wget, xxd, xz-utils, zip, zstd'
+extra_pkgs='curl, pciutils, sudo, unzip, wget, xxd, xz-utils, zip, zstd'
 ```
