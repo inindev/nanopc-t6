@@ -1,4 +1,4 @@
-## u-boot 2023.07 for the nanopc-t6
+## u-boot 2023.10-rc2 for the nanopc-t6
 
 <i>Note: This script is intended to be run from a 64 bit arm device such as a rock 5b or an odroid m1.</i>
 
