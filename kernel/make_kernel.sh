@@ -50,6 +50,7 @@ main() {
     if [ ! -d "kernel-$lv/linux-$lv" ]; then
         tar -C "kernel-$lv" -xavf "kernel-$lv/$lf"
 
+        local patch
         for patch in patches/*.patch; do
             patch -p1 -d "kernel-$lv/linux-$lv" -i "../../$patch"
         done
