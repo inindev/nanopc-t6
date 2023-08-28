@@ -1,7 +1,7 @@
-From 620f369192b4073e7dc71521943b6215db2e6196 Mon Sep 17 00:00:00 2001
+From bf8d90af405d2a3c553c607eda3da9696c214e51 Mon Sep 17 00:00:00 2001
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 Date: Mon, 10 Jul 2023 18:52:16 +0200
-Subject: [PATCH 05/79] dt-bindings: vendor-prefixes: Add prefix for belling
+Subject: [PATCH 05/81] dt-bindings: vendor-prefixes: Add prefix for belling
 
 Add a vendor prefix entry for belling (https://www.belling.com.cn)
 

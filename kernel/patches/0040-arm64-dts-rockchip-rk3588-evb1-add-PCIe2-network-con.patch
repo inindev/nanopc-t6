@@ -1,7 +1,7 @@
-From f07bdfb2a7aef012b7722e77681ea4eb822f304f Mon Sep 17 00:00:00 2001
+From cfa968d467cce57cafb81e3daa9d3e5deb5cdd22 Mon Sep 17 00:00:00 2001
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 Date: Mon, 17 Apr 2023 21:13:03 +0200
-Subject: [PATCH 40/79] arm64: dts: rockchip: rk3588-evb1: add PCIe2 network
+Subject: [PATCH 40/81] arm64: dts: rockchip: rk3588-evb1: add PCIe2 network
  controller
 
 The RK3588 EVB1 has a second network card, which is connected

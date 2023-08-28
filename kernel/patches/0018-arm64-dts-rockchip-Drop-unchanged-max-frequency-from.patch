@@ -1,7 +1,7 @@
-From 8a31adc3a41eb685fc6bf041704b2193338047de Mon Sep 17 00:00:00 2001
+From 02cd2cbca0c55a418a980e04e2e610ed5ae25e35 Mon Sep 17 00:00:00 2001
 From: Jagan Teki <jagan@edgeble.ai>
 Date: Wed, 21 Jun 2023 12:15:07 +0530
-Subject: [PATCH 18/79] arm64: dts: rockchip: Drop unchanged max-frequency from
+Subject: [PATCH 18/81] arm64: dts: rockchip: Drop unchanged max-frequency from
  rk3588 boards
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -62,7 +62,7 @@ index 4b2d857ee..f06b2ddcf 100644
  	mmc-hs400-enhanced-strobe;
  	status = "okay";
 diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-index cea49f89f..9cea26299 100644
+index 87f4d5e94..fae91522c 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
 @@ -217,7 +217,6 @@ &sdhci {
@@ -74,7 +74,7 @@ index cea49f89f..9cea26299 100644
  	mmc-hs400-enhanced-strobe;
  	status = "okay";
 diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts b/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts
-index 4d9ed2a02..f0ce502e9 100644
+index 1a60a275d..d1503a4b2 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts
 @@ -401,7 +401,6 @@ &sdhci {

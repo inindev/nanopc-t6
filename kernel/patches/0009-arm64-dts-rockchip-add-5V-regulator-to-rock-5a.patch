@@ -1,7 +1,7 @@
-From f00132e21cf0cf3b0bf59f8922a6a076d602f275 Mon Sep 17 00:00:00 2001
+From 2172ee50d2a461e2674d93314b0df21346a47122 Mon Sep 17 00:00:00 2001
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 Date: Mon, 10 Jul 2023 18:52:20 +0200
-Subject: [PATCH 09/79] arm64: dts: rockchip: add 5V regulator to rock-5a
+Subject: [PATCH 09/81] arm64: dts: rockchip: add 5V regulator to rock-5a
 
 Add GPIO controlled 5V regulator, which is used for supplying
 the fan, on-board USB hub and HDMI.

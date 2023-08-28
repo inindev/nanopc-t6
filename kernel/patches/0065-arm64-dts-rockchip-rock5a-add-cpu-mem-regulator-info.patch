@@ -1,7 +1,7 @@
-From e2b4f1d84b6e459b1643efc1c1aeddfe111f2521 Mon Sep 17 00:00:00 2001
+From 0d3bca012c7d25c4a2e67b2af3a3fe71f1eb49d9 Mon Sep 17 00:00:00 2001
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Mon, 24 Jul 2023 15:07:49 +0200
-Subject: [PATCH 68/79] arm64: dts: rockchip: rock5b: add cpu mem regulator
+Date: Mon, 24 Jul 2023 15:18:39 +0200
+Subject: [PATCH 65/81] arm64: dts: rockchip: rock5a: add cpu mem regulator
  info
 
 Add the second supply regulator for the CPU cores, which is used
@@ -9,14 +9,14 @@ for supplying the memory interface.
 
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts | 8 ++++++++
+ arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts | 8 ++++++++
  1 file changed, 8 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-index 40b6996ae..574b8fc53 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-@@ -128,34 +128,42 @@ &combphy2_psu {
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
+index f0e3a0975..acc620059 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
+@@ -119,34 +119,42 @@ &combphy2_psu {
  
  &cpu_b0 {
  	cpu-supply = <&vdd_cpu_big0_s0>;

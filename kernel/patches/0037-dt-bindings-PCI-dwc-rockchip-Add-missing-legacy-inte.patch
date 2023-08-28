@@ -1,7 +1,7 @@
-From 9cf3727311cfa32bbccba746a84773513a9ee439 Mon Sep 17 00:00:00 2001
+From 9a656d55845a438c4f85087c4e3d1e45e3d66825 Mon Sep 17 00:00:00 2001
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 Date: Wed, 19 Apr 2023 18:27:12 +0200
-Subject: [PATCH 37/79] dt-bindings: PCI: dwc: rockchip: Add missing
+Subject: [PATCH 37/81] dt-bindings: PCI: dwc: rockchip: Add missing
  legacy-interrupt-controller
 
 Rockchip RK356x and RK3588 handle legacy interrupts via a ganged
