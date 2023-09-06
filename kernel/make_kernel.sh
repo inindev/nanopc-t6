@@ -11,6 +11,12 @@ set -e
 config_fixups() {
     local lpath=$1
 
+    # enable realtek pci wireless
+    echo 'CONFIG_RTW88=m' >> "$lpath/arch/arm64/configs/defconfig"
+    echo 'CONFIG_RTW88_8822CE=m' >> "$lpath/arch/arm64/configs/defconfig"
+    echo 'CONFIG_RTW88_8723DE=m' >> "$lpath/arch/arm64/configs/defconfig"
+    echo 'CONFIG_RTW88_8821CE=m' >> "$lpath/arch/arm64/configs/defconfig"
+
     #echo 6 > "$lpath/.version"
 }
 

@@ -102,7 +102,7 @@ main() {
     mkdir -p "$mountpt/usr/lib/firmware"
     local lfwn=$(basename "$lfw")
     local lfwbn="${lfwn%%.*}"
-    tar -C "$mountpt/usr/lib/firmware" --strip-components=1 --wildcards -xavf "$lfw" "$lfwbn/microchip/mscc*" "$lfwbn/nvidia/tegra???" "$lfwbn/r8a779x*" "$lfwbn/rockchip" "$lfwbn/rtl_bt" "$lfwbn/rtl_nic"
+    tar -C "$mountpt/usr/lib/firmware" --strip-components=1 --wildcards -xavf "$lfw" "$lfwbn/microchip/mscc*" "$lfwbn/nvidia/tegra???" "$lfwbn/r8a779x*" "$lfwbn/rockchip" "$lfwbn/rtl_bt" "$lfwbn/rtl_nic" "$lfwbn/rtlwifi" "$lfwbn/rtw88"
 
     # install debian linux from deb packages (debootstrap)
     print_hdr "installing root filesystem from debian.org"
