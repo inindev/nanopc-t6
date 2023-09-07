@@ -1,4 +1,4 @@
-From d23d87e801cca21ab6324a37fe1a3c87e43b0139 Mon Sep 17 00:00:00 2001
+From 1bf814d339edd1199dd5b8f580d9bac3bd96d484 Mon Sep 17 00:00:00 2001
 From: John Clark <inindev@gmail.com>
 Date: Tue, 8 Aug 2023 17:13:16 +0000
 Subject: [PATCH 8/9] HACK: Sync rk3588 device tree from sre rk3588 branch
@@ -76,12 +76,12 @@ Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
  arch/arm/dts/rk3588.dtsi                 | 297 +++++++
  arch/arm/dts/rk3588s-rock-5a-u-boot.dtsi |  24 +-
  arch/arm/dts/rk3588s-rock-5a.dts         | 701 ++++++++++++++++-
- arch/arm/dts/rk3588s-u-boot.dtsi         | 268 -------
+ arch/arm/dts/rk3588s-u-boot.dtsi         | 276 -------
  arch/arm/dts/rk3588s.dtsi                | 948 +++++++++++++++++++++++
  configs/rock5a-rk3588s_defconfig         |  26 +-
  configs/rock5b-rk3588_defconfig          |  11 +-
  include/dt-bindings/ata/ahci.h           |  20 +
- 10 files changed, 2717 insertions(+), 604 deletions(-)
+ 10 files changed, 2717 insertions(+), 612 deletions(-)
  create mode 100644 include/dt-bindings/ata/ahci.h
 
 diff --git a/arch/arm/dts/rk3588-rock-5b-u-boot.dtsi b/arch/arm/dts/rk3588-rock-5b-u-boot.dtsi
@@ -2357,10 +2357,10 @@ index 901825514f..58578fa6b2 100644
 +	status = "okay";
 +};
 diff --git a/arch/arm/dts/rk3588s-u-boot.dtsi b/arch/arm/dts/rk3588s-u-boot.dtsi
-index 245bc8b27c..640c674d56 100644
+index 245bc8b27c..f351c9e9ec 100644
 --- a/arch/arm/dts/rk3588s-u-boot.dtsi
 +++ b/arch/arm/dts/rk3588s-u-boot.dtsi
-@@ -22,232 +22,11 @@
+@@ -22,293 +22,17 @@
  		status = "okay";
  	};
  
@@ -2440,7 +2440,7 @@ index 245bc8b27c..640c674d56 100644
  		compatible = "rockchip,rk3588-pmu1-grf", "syscon";
  		reg = <0x0 0xfd58a000 0x0 0x2000>;
  	};
--
+ 
 -	pipe_phy0_grf: syscon@fd5bc000 {
 -		compatible = "rockchip,pipe-phy-grf", "syscon";
 -		reg = <0x0 0xfd5bc000 0x0 0x100>;
@@ -2590,10 +2590,17 @@ index 245bc8b27c..640c674d56 100644
 -		};
 -	};
 -
- 	sfc: spi@fe2b0000 {
- 		compatible = "rockchip,sfc";
- 		reg = <0x0 0xfe2b0000 0x0 0x4000>;
-@@ -262,53 +41,6 @@
+-	sfc: spi@fe2b0000 {
+-		compatible = "rockchip,sfc";
+-		reg = <0x0 0xfe2b0000 0x0 0x4000>;
+-		interrupts = <GIC_SPI 206 IRQ_TYPE_LEVEL_HIGH 0>;
+-		clocks = <&cru SCLK_SFC>, <&cru HCLK_SFC>;
+-		clock-names = "clk_sfc", "hclk_sfc";
+-		status = "disabled";
+-	};
+-
+ 	rng: rng@fe378000 {
+ 		compatible = "rockchip,trngv1";
  		reg = <0x0 0xfe378000 0x0 0x200>;
  		status = "disabled";
  	};
