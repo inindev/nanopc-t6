@@ -1,4 +1,4 @@
-From a4f2a566a884c6a37edd00cb7eece605cc998d7f Mon Sep 17 00:00:00 2001
+From fd09d5bae3aa6722a1aee5aa0fb1aca7e908728e Mon Sep 17 00:00:00 2001
 From: John Clark <inindev@gmail.com>
 Date: Mon, 7 Aug 2023 04:04:40 +0000
 Subject: [PATCH 9/9] friendly elec nanopc-t6 support
@@ -7,18 +7,18 @@ Signed-off-by: John Clark <inindev@gmail.com>
 ---
  arch/arm/dts/Makefile                     |   1 +
  arch/arm/dts/rk3588-nanopc-t6-u-boot.dtsi |  42 +
- arch/arm/dts/rk3588-nanopc-t6.dts         | 888 ++++++++++++++++++++++
- configs/nanopc-t6-rk3588_defconfig        | 121 +++
- 4 files changed, 1052 insertions(+)
+ arch/arm/dts/rk3588-nanopc-t6.dts         | 916 ++++++++++++++++++++++
+ configs/nanopc-t6-rk3588_defconfig        | 122 +++
+ 4 files changed, 1081 insertions(+)
  create mode 100644 arch/arm/dts/rk3588-nanopc-t6-u-boot.dtsi
  create mode 100644 arch/arm/dts/rk3588-nanopc-t6.dts
  create mode 100644 configs/nanopc-t6-rk3588_defconfig
 
 diff --git a/arch/arm/dts/Makefile b/arch/arm/dts/Makefile
-index bd518064f3..e202b5f1e5 100644
+index 85fd5b1157..70c0d6721a 100644
 --- a/arch/arm/dts/Makefile
 +++ b/arch/arm/dts/Makefile
-@@ -188,6 +188,7 @@ dtb-$(CONFIG_ROCKCHIP_RK3588) += \
+@@ -189,6 +189,7 @@ dtb-$(CONFIG_ROCKCHIP_RK3588) += \
  	rk3588-edgeble-neu6a-io.dtb \
  	rk3588-edgeble-neu6b-io.dtb \
  	rk3588-evb1-v10.dtb \
@@ -28,7 +28,7 @@ index bd518064f3..e202b5f1e5 100644
  
 diff --git a/arch/arm/dts/rk3588-nanopc-t6-u-boot.dtsi b/arch/arm/dts/rk3588-nanopc-t6-u-boot.dtsi
 new file mode 100644
-index 0000000000..f899276907
+index 0000000000..7519f17e9e
 --- /dev/null
 +++ b/arch/arm/dts/rk3588-nanopc-t6-u-boot.dtsi
 @@ -0,0 +1,42 @@
@@ -46,7 +46,7 @@ index 0000000000..f899276907
 +	};
 +};
 +
-+&fspim2_pins {
++&fspim1_pins {
 +	bootph-all;
 +};
 +
@@ -60,7 +60,7 @@ index 0000000000..f899276907
 +	bootph-pre-ram;
 +	u-boot,spl-sfc-no-dma;
 +	pinctrl-names = "default";
-+	pinctrl-0 = <&fspim2_pins>;
++	pinctrl-0 = <&fspim1_pins>;
 +	#address-cells = <1>;
 +	#size-cells = <0>;
 +	status = "okay";
@@ -76,10 +76,10 @@ index 0000000000..f899276907
 +};
 diff --git a/arch/arm/dts/rk3588-nanopc-t6.dts b/arch/arm/dts/rk3588-nanopc-t6.dts
 new file mode 100644
-index 0000000000..e60a8fe9dc
+index 0000000000..965bf5263d
 --- /dev/null
 +++ b/arch/arm/dts/rk3588-nanopc-t6.dts
-@@ -0,0 +1,888 @@
+@@ -0,0 +1,916 @@
 +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
 +/*
 + * Copyright (c) 2021 Rockchip Electronics Co., Ltd.
@@ -216,6 +216,18 @@ index 0000000000..e60a8fe9dc
 +		regulator-name = "vbus5v0_typec";
 +		regulator-min-microvolt = <5000000>;
 +		regulator-max-microvolt = <5000000>;
++		vin-supply = <&vcc5v0_sys>;
++	};
++
++	vcc3v3_pcie2x1l0: vcc3v3-pcie2x1l0-regulator {
++		compatible = "regulator-fixed";
++		enable-active-high;
++		gpio = <&gpio4 RK_PC2 GPIO_ACTIVE_HIGH>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&pcie_m2_1_pwren>;
++		regulator-name = "vcc3v3_pcie2x1l0";
++		regulator-min-microvolt = <3300000>;
++		regulator-max-microvolt = <3300000>;
 +		vin-supply = <&vcc5v0_sys>;
 +	};
 +
@@ -503,6 +515,14 @@ index 0000000000..e60a8fe9dc
 +	status = "okay";
 +};
 +
++&pcie2x1l1 {
++	reset-gpios = <&gpio4 RK_PA2 GPIO_ACTIVE_HIGH>;
++	vpcie3v3-supply = <&vcc3v3_pcie2x1l0>;
++	pinctrl-names = "default";
++	pinctrl-0 = <&pcie2_1_rst>;
++	status = "okay";
++};
++
 +&pcie2x1l2 {
 +	reset-gpios = <&gpio4 RK_PA4 GPIO_ACTIVE_HIGH>;
 +	vpcie3v3-supply = <&vcc_3v3_pcie20>;
@@ -549,12 +569,20 @@ index 0000000000..e60a8fe9dc
 +			rockchip,pins = <4 RK_PB3 RK_FUNC_GPIO &pcfg_pull_none>;
 +		};
 +
++		pcie2_1_rst: pcie2-1-rst {
++			rockchip,pins = <4 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++
 +		pcie2_2_rst: pcie2-2-rst {
 +			rockchip,pins = <4 RK_PA4 RK_FUNC_GPIO &pcfg_pull_none>;
 +		};
 +
 +		pcie_m2_0_pwren: pcie-m20-pwren {
 +			rockchip,pins = <2 RK_PC5 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++
++		pcie_m2_1_pwren: pcie-m21-pwren {
++			rockchip,pins = <4 RK_PC2 RK_FUNC_GPIO &pcfg_pull_none>;
 +		};
 +	};
 +
@@ -970,10 +998,10 @@ index 0000000000..e60a8fe9dc
 +};
 diff --git a/configs/nanopc-t6-rk3588_defconfig b/configs/nanopc-t6-rk3588_defconfig
 new file mode 100644
-index 0000000000..61b5eab5fd
+index 0000000000..418a64f154
 --- /dev/null
 +++ b/configs/nanopc-t6-rk3588_defconfig
-@@ -0,0 +1,121 @@
+@@ -0,0 +1,122 @@
 +CONFIG_ARM=y
 +CONFIG_SKIP_LOWLEVEL_INIT=y
 +CONFIG_SYS_HAS_NONCACHED_MEMORY=y
@@ -1055,6 +1083,7 @@ index 0000000000..61b5eab5fd
 +CONFIG_SF_DEFAULT_BUS=5
 +CONFIG_SPI_FLASH_SFDP_SUPPORT=y
 +CONFIG_SPI_FLASH_MACRONIX=y
++CONFIG_SPI_FLASH_WINBOND=y
 +CONFIG_SPI_FLASH_XTX=y
 +CONFIG_RTL8169=y
 +CONFIG_NVME_PCI=y
