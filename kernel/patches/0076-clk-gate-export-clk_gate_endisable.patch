@@ -1,7 +1,7 @@
-From 4270d7830f734a556cca8ed7c4b0f64e8028aa6b Mon Sep 17 00:00:00 2001
+From c427c9549919b8752699df504b5a677af68d9695 Mon Sep 17 00:00:00 2001
 From: Elaine Zhang <zhangqing@rock-chips.com>
 Date: Wed, 2 Aug 2023 15:20:35 +0800
-Subject: [PATCH 76/81] clk: gate: export clk_gate_endisable
+Subject: [PATCH 76/83] clk: gate: export clk_gate_endisable
 
 make clk_gate_endisable not static, export API for other use.
 

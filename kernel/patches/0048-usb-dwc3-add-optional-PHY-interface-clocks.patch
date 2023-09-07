@@ -1,7 +1,7 @@
-From df6ec59ae74d3af97dbacf2d37c9377b6a5c26b4 Mon Sep 17 00:00:00 2001
+From 08b4fb64d756d2159b52bff05275a26dfbdc4768 Mon Sep 17 00:00:00 2001
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 Date: Thu, 20 Jul 2023 18:59:37 +0200
-Subject: [PATCH 48/81] usb: dwc3: add optional PHY interface clocks
+Subject: [PATCH 48/83] usb: dwc3: add optional PHY interface clocks
 
 On Rockchip RK3588 one of the DWC3 cores is integrated weirdly and
 requires two extra clocks to be enabled. Without these extra clocks

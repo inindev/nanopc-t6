@@ -1,7 +1,7 @@
 From 6d70d38c011d1699d640187a883ee0094134849c Mon Sep 17 00:00:00 2001
 From: John Clark <inindev@gmail.com>
 Date: Wed, 6 Sep 2023 01:21:51 +0000
-Subject: [PATCH] arm64: dts: rockchip: Add NanoPC T6 PCIe e-key support
+Subject: [PATCH 4/5] arm64: dts: rockchip: Add NanoPC T6 PCIe e-key support
 
 before
 ~~~~~~

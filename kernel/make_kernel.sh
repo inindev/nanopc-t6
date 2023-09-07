@@ -11,6 +11,9 @@ set -e
 config_fixups() {
     local lpath=$1
 
+    # enable rockchip sfc
+    echo 'CONFIG_SPI_ROCKCHIP_SFC=m' >> "$lpath/arch/arm64/configs/defconfig"
+
     # enable realtek pci wireless
     echo 'CONFIG_RTW88=m' >> "$lpath/arch/arm64/configs/defconfig"
     echo 'CONFIG_RTW88_8822CE=m' >> "$lpath/arch/arm64/configs/defconfig"

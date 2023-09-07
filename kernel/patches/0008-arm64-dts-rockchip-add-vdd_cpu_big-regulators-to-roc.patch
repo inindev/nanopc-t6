@@ -1,7 +1,7 @@
-From 081fda6aacd77d5d28117918548190160b4c05bf Mon Sep 17 00:00:00 2001
+From 2085eccc2bd2d8cabf06fbe6441123e625917da8 Mon Sep 17 00:00:00 2001
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 Date: Mon, 10 Jul 2023 18:52:19 +0200
-Subject: [PATCH 08/81] arm64: dts: rockchip: add vdd_cpu_big regulators to
+Subject: [PATCH 08/83] arm64: dts: rockchip: add vdd_cpu_big regulators to
  rock-5a
 
 The RK8602 and RK8603 voltage regulators on the Rock 5A board provide

@@ -1,7 +1,7 @@
-From 0d3bca012c7d25c4a2e67b2af3a3fe71f1eb49d9 Mon Sep 17 00:00:00 2001
+From 18d695b89b03f751b08986ece0e6773d0613b2fb Mon Sep 17 00:00:00 2001
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 Date: Mon, 24 Jul 2023 15:18:39 +0200
-Subject: [PATCH 65/81] arm64: dts: rockchip: rock5a: add cpu mem regulator
+Subject: [PATCH 65/83] arm64: dts: rockchip: rock5a: add cpu mem regulator
  info
 
 Add the second supply regulator for the CPU cores, which is used

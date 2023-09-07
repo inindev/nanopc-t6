@@ -1,7 +1,7 @@
-From 02cd2cbca0c55a418a980e04e2e610ed5ae25e35 Mon Sep 17 00:00:00 2001
+From ef4c75f51b5d3f2ac988c7ee3510dd1d339432cb Mon Sep 17 00:00:00 2001
 From: Jagan Teki <jagan@edgeble.ai>
 Date: Wed, 21 Jun 2023 12:15:07 +0530
-Subject: [PATCH 18/81] arm64: dts: rockchip: Drop unchanged max-frequency from
+Subject: [PATCH 18/83] arm64: dts: rockchip: Drop unchanged max-frequency from
  rk3588 boards
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8

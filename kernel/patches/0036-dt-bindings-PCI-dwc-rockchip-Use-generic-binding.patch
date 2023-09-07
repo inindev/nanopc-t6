@@ -1,7 +1,7 @@
-From e791f5a5b78832a6ce06d70b4dd17228728e0556 Mon Sep 17 00:00:00 2001
+From 3914467d7fa01d0530c5936efdbb6c2b16f4ac3c Mon Sep 17 00:00:00 2001
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 Date: Mon, 17 Jul 2023 17:07:48 +0200
-Subject: [PATCH 36/81] dt-bindings: PCI: dwc: rockchip: Use generic binding
+Subject: [PATCH 36/83] dt-bindings: PCI: dwc: rockchip: Use generic binding
 
 Use the generic binding for Rockchip. This should either be
 ignored/dropped or squashed into the previous commit.

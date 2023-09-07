@@ -1,7 +1,7 @@
-From 18b83e54da1dead73b304661780d0429c312a1f9 Mon Sep 17 00:00:00 2001
+From 42c252c8824ed8c7a30874c4877f414f40a46fe0 Mon Sep 17 00:00:00 2001
 From: John Clark <inindev@gmail.com>
 Date: Wed, 9 Aug 2023 17:45:36 +0000
-Subject: [PATCH 81/81] arm64: dts: rockchip: Add NanoPC T6 pcie network
+Subject: [PATCH 81/83] arm64: dts: rockchip: Add NanoPC T6 pcie network
  support
 
 Signed-off-by: John Clark <inindev@gmail.com>

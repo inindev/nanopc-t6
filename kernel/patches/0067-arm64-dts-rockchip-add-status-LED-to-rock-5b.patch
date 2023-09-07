@@ -1,7 +1,7 @@
-From b3e5b186a33fece7e4eb7feeabc9a6f1553b09a5 Mon Sep 17 00:00:00 2001
+From d90fa6f51a7aedc349078275e50a37878c46677c Mon Sep 17 00:00:00 2001
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 Date: Fri, 21 Jul 2023 15:34:28 +0200
-Subject: [PATCH 67/81] arm64: dts: rockchip: add status LED to rock-5b
+Subject: [PATCH 67/83] arm64: dts: rockchip: add status LED to rock-5b
 
 Describe the Rock 5B status LED in its device tree.
 
