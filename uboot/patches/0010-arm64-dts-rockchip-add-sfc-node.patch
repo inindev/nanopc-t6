@@ -1,0 +1,89 @@
+From 9524776cc097dca5f536894d383d877fcb67dd10 Mon Sep 17 00:00:00 2001
+From: John Clark <inindev@gmail.com>
+Date: Fri, 8 Sep 2023 11:17:02 +0000
+Subject: [PATCH 10/11] arm64: dts: rockchip: add sfc node
+
+Signed-off-by: John Clark <inindev@gmail.com>
+---
+ arch/arm/dts/rk3588-nanopc-t6.dts | 44 +++++++++++++++++++++++++++++++
+ arch/arm/dts/rk3588s.dtsi         |  9 +++++++
+ 2 files changed, 53 insertions(+)
+
+diff --git a/arch/arm/dts/rk3588-nanopc-t6.dts b/arch/arm/dts/rk3588-nanopc-t6.dts
+index 965bf5263d..3e1ff79148 100644
+--- a/arch/arm/dts/rk3588-nanopc-t6.dts
++++ b/arch/arm/dts/rk3588-nanopc-t6.dts
+@@ -550,6 +550,50 @@
+ 	status = "okay";
+ };
+ 
++
++&sfc {
++	pinctrl-names = "default";
++	pinctrl-0 = <&fspim1_pins>;
++	#address-cells = <1>;
++	#size-cells = <0>;
++	status = "okay";
++
++	flash@0 {
++		compatible = "jedec,spi-nor";
++		reg = <0>;
++		spi-max-frequency = <50000000>;
++		spi-rx-bus-width = <4>;
++		spi-tx-bus-width = <1>;
++
++		partitions {
++			compatible = "fixed-partitions";
++			#address-cells = <1>;
++			#size-cells = <1>;
++
++			partition@0 {
++				label = "u-boot-spl";
++				reg = <0x0 0xe0000>;
++			};
++			partition@e0000 {
++				label = "u-boot-env";
++				reg = <0xe0000 0x20000>;
++			};
++			partition@100000 {
++				label = "u-boot";
++				reg = <0x100000 0x200000>;
++			};
++			partition@300000 {
++				label = "splash";
++				reg = <0x300000 0x100000>;
++			};
++			partition@400000 {
++				label = "filesystem";
++				reg = <0x400000 0xc00000>;
++			};
++		};
++	};
++};
++
+ &spi2 {
+ 	status = "okay";
+ 	assigned-clocks = <&cru CLK_SPI2>;
+diff --git a/arch/arm/dts/rk3588s.dtsi b/arch/arm/dts/rk3588s.dtsi
+index acb6a5ff8c..13fc9fb419 100644
+--- a/arch/arm/dts/rk3588s.dtsi
++++ b/arch/arm/dts/rk3588s.dtsi
+@@ -1915,6 +1915,15 @@
+ 		};
+ 	};
+ 
++	sfc: spi@fe2b0000 {
++		compatible = "rockchip,sfc";
++		reg = <0x0 0xfe2b0000 0x0 0x4000>;
++		interrupts = <GIC_SPI 206 IRQ_TYPE_LEVEL_HIGH 0>;
++		clocks = <&cru SCLK_SFC>, <&cru HCLK_SFC>;
++		clock-names = "clk_sfc", "hclk_sfc";
++		status = "disabled";
++	};
++
+ 	sata0: sata@fe210000 {
+ 		compatible = "rockchip,rk3588-dwc-ahci", "snps,dwc-ahci";
+ 		reg = <0 0xfe210000 0 0x1000>;
+-- 
+2.40.1
+

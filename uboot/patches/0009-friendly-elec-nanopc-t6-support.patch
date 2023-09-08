@@ -1,16 +1,15 @@
-From 3d7dc4dc37761bfafc1a4baebaa9aef1803d22b5 Mon Sep 17 00:00:00 2001
+From 8621d20df17bf439024bf33add8348c827a67914 Mon Sep 17 00:00:00 2001
 From: John Clark <inindev@gmail.com>
 Date: Mon, 7 Aug 2023 04:04:40 +0000
-Subject: [PATCH 9/9] friendly elec nanopc-t6 support
+Subject: [PATCH 09/11] friendly elec nanopc-t6 support
 
 Signed-off-by: John Clark <inindev@gmail.com>
 ---
  arch/arm/dts/Makefile                     |   1 +
  arch/arm/dts/rk3588-nanopc-t6-u-boot.dtsi |  22 +
- arch/arm/dts/rk3588-nanopc-t6.dts         | 960 ++++++++++++++++++++++
- arch/arm/dts/rk3588s.dtsi                 |  11 +
+ arch/arm/dts/rk3588-nanopc-t6.dts         | 916 ++++++++++++++++++++++
  configs/nanopc-t6-rk3588_defconfig        | 116 +++
- 5 files changed, 1110 insertions(+)
+ 4 files changed, 1055 insertions(+)
  create mode 100644 arch/arm/dts/rk3588-nanopc-t6-u-boot.dtsi
  create mode 100644 arch/arm/dts/rk3588-nanopc-t6.dts
  create mode 100644 configs/nanopc-t6-rk3588_defconfig
@@ -57,10 +56,10 @@ index 0000000000..4d7b104193
 +};
 diff --git a/arch/arm/dts/rk3588-nanopc-t6.dts b/arch/arm/dts/rk3588-nanopc-t6.dts
 new file mode 100644
-index 0000000000..3e1ff79148
+index 0000000000..965bf5263d
 --- /dev/null
 +++ b/arch/arm/dts/rk3588-nanopc-t6.dts
-@@ -0,0 +1,960 @@
+@@ -0,0 +1,916 @@
 +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
 +/*
 + * Copyright (c) 2021 Rockchip Electronics Co., Ltd.
@@ -613,50 +612,6 @@ index 0000000000..3e1ff79148
 +	status = "okay";
 +};
 +
-+
-+&sfc {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&fspim1_pins>;
-+	#address-cells = <1>;
-+	#size-cells = <0>;
-+	status = "okay";
-+
-+	flash@0 {
-+		compatible = "jedec,spi-nor";
-+		reg = <0>;
-+		spi-max-frequency = <50000000>;
-+		spi-rx-bus-width = <4>;
-+		spi-tx-bus-width = <1>;
-+
-+		partitions {
-+			compatible = "fixed-partitions";
-+			#address-cells = <1>;
-+			#size-cells = <1>;
-+
-+			partition@0 {
-+				label = "u-boot-spl";
-+				reg = <0x0 0xe0000>;
-+			};
-+			partition@e0000 {
-+				label = "u-boot-env";
-+				reg = <0xe0000 0x20000>;
-+			};
-+			partition@100000 {
-+				label = "u-boot";
-+				reg = <0x100000 0x200000>;
-+			};
-+			partition@300000 {
-+				label = "splash";
-+				reg = <0x300000 0x100000>;
-+			};
-+			partition@400000 {
-+				label = "filesystem";
-+				reg = <0x400000 0xc00000>;
-+			};
-+		};
-+	};
-+};
-+
 +&spi2 {
 +	status = "okay";
 +	assigned-clocks = <&cru CLK_SPI2>;
@@ -1021,28 +976,6 @@ index 0000000000..3e1ff79148
 +&usb_host1_ohci {
 +	status = "okay";
 +};
-diff --git a/arch/arm/dts/rk3588s.dtsi b/arch/arm/dts/rk3588s.dtsi
-index acb6a5ff8c..1401601bec 100644
---- a/arch/arm/dts/rk3588s.dtsi
-+++ b/arch/arm/dts/rk3588s.dtsi
-@@ -1915,6 +1915,17 @@
- 		};
- 	};
- 
-+	sfc: spi@fe2b0000 {
-+		compatible = "rockchip,sfc";
-+		reg = <0x0 0xfe2b0000 0x0 0x4000>;
-+		interrupts = <GIC_SPI 206 IRQ_TYPE_LEVEL_HIGH 0>;
-+		clocks = <&cru SCLK_SFC>, <&cru HCLK_SFC>;
-+		clock-names = "clk_sfc", "hclk_sfc";
-+		pinctrl-0 = <&fspim2_pins>;
-+		pinctrl-names = "default";
-+		status = "disabled";
-+	};
-+
- 	sata0: sata@fe210000 {
- 		compatible = "rockchip,rk3588-dwc-ahci", "snps,dwc-ahci";
- 		reg = <0 0xfe210000 0 0x1000>;
 diff --git a/configs/nanopc-t6-rk3588_defconfig b/configs/nanopc-t6-rk3588_defconfig
 new file mode 100644
 index 0000000000..73c6a0d3d3

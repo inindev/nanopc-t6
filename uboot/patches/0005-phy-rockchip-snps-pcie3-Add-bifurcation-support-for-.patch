@@ -1,7 +1,7 @@
-From 754c568fe49314455f22690afce6af6b438371df Mon Sep 17 00:00:00 2001
+From 331a8b02a6193ff263a8c276d3b11567f892df48 Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
 Date: Wed, 2 Aug 2023 19:04:31 +0000
-Subject: [PATCH 5/9] phy: rockchip: snps-pcie3: Add bifurcation support for
+Subject: [PATCH 05/11] phy: rockchip: snps-pcie3: Add bifurcation support for
  RK3568
 
 Configure aggregation or bifurcation mode on RK3568 based on the value

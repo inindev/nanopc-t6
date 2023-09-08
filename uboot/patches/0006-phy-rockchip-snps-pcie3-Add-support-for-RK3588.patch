@@ -1,7 +1,7 @@
-From fadd5a1fe737e5ce896a26a06fa81bfa6a3cf7df Mon Sep 17 00:00:00 2001
+From 2b9de5e3d56b3799e566fcb2796d7b4e7010483f Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
 Date: Wed, 2 Aug 2023 19:04:32 +0000
-Subject: [PATCH 6/9] phy: rockchip: snps-pcie3: Add support for RK3588
+Subject: [PATCH 06/11] phy: rockchip: snps-pcie3: Add support for RK3588
 
 Add support for the RK3588 variant to the driver.
 

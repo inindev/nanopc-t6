@@ -1,7 +1,8 @@
-From 103fd1cf837e2f6fc01c8ff54b0daa890d782594 Mon Sep 17 00:00:00 2001
+From e9a3d2b451765b36ba8429eb529178d3500f7f5a Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
 Date: Wed, 2 Aug 2023 19:04:29 +0000
-Subject: [PATCH 4/9] phy: rockchip: snps-pcie3: Refactor to use a phy_init ops
+Subject: [PATCH 04/11] phy: rockchip: snps-pcie3: Refactor to use a phy_init
+ ops
 
 Add a phy_init ops in preparation for upcoming support of a RK3588
 variant in the driver.

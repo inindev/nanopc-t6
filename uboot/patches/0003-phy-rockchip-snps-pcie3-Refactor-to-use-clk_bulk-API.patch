@@ -1,7 +1,7 @@
-From 705ee5b1a5a34f43c8daa20bfeb11c1e981ba1c4 Mon Sep 17 00:00:00 2001
+From aa7db5a283137a673708596169713604255c59d9 Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
 Date: Wed, 2 Aug 2023 19:04:29 +0000
-Subject: [PATCH 3/9] phy: rockchip: snps-pcie3: Refactor to use clk_bulk API
+Subject: [PATCH 03/11] phy: rockchip: snps-pcie3: Refactor to use clk_bulk API
 
 Change to use clk_bulk API and syscon_regmap_lookup_by_phandle to
 simplify in preparation for upcoming support of a RK3588 variant.

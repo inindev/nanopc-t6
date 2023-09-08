@@ -1,7 +1,7 @@
-From 5f27aaf0df09f1488f587e88f688e9d312cec1a0 Mon Sep 17 00:00:00 2001
+From 02adbabff173c13b27deb8d481da504d3d9bbba8 Mon Sep 17 00:00:00 2001
 From: Jonas Karlman <jonas@kwiboo.se>
 Date: Wed, 2 Aug 2023 19:04:33 +0000
-Subject: [PATCH 7/9] phy: rockchip: naneng-combphy: Use signal from comb PHY
+Subject: [PATCH 07/11] phy: rockchip: naneng-combphy: Use signal from comb PHY
  on RK3588
 
 Route signal from comb PHY instead of PCIe3 PHY to PCIe1l0 and PCIe1l1.

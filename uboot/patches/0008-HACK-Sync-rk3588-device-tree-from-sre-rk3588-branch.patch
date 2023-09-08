@@ -1,7 +1,7 @@
-From 1bf814d339edd1199dd5b8f580d9bac3bd96d484 Mon Sep 17 00:00:00 2001
+From 7347ed0079bbce85406952d720ab5bcf95567135 Mon Sep 17 00:00:00 2001
 From: John Clark <inindev@gmail.com>
 Date: Tue, 8 Aug 2023 17:13:16 +0000
-Subject: [PATCH 8/9] HACK: Sync rk3588 device tree from sre rk3588 branch
+Subject: [PATCH 08/11] HACK: Sync rk3588 device tree from sre rk3588 branch
 
 Device tree files picked 1:1 from [1].
 
