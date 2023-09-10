@@ -1,4 +1,4 @@
-From 3e526a39646dc9af27e40b39dddb102189566bb5 Mon Sep 17 00:00:00 2001
+From 47e742846ea3f05242b67bdf5a1b25004afd477e Mon Sep 17 00:00:00 2001
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 Date: Tue, 25 Apr 2023 17:38:57 +0200
 Subject: [PATCH 52/83] dt-bindings: phy: add rockchip usbdp combo phy document
@@ -16,7 +16,7 @@ Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 
 diff --git a/Documentation/devicetree/bindings/phy/phy-rockchip-usbdp.yaml b/Documentation/devicetree/bindings/phy/phy-rockchip-usbdp.yaml
 new file mode 100644
-index 000000000..dcca84d57
+index 0000000..dcca84d
 --- /dev/null
 +++ b/Documentation/devicetree/bindings/phy/phy-rockchip-usbdp.yaml
 @@ -0,0 +1,166 @@

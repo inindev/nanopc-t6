@@ -1,4 +1,4 @@
-From 94a58da641bfcd7132d4e12801e9f2a255082de9 Mon Sep 17 00:00:00 2001
+From 2c5e96b83c8f8abee732c156207fb1e711510ed6 Mon Sep 17 00:00:00 2001
 From: John Clark <inindev@gmail.com>
 Date: Wed, 6 Sep 2023 22:06:33 +0000
 Subject: [PATCH 5/5] arm64: dts: rockchip: add sfc node
@@ -6,7 +6,8 @@ Subject: [PATCH 5/5] arm64: dts: rockchip: add sfc node
 Signed-off-by: John Clark <inindev@gmail.com>
 ---
  .../boot/dts/rockchip/rk3588-nanopc-t6.dts    | 44 +++++++++++++++++++
- 1 file changed, 44 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3588s.dtsi     |  9 ++++
+ 2 files changed, 53 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dts b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dts
 index 965bf52..3e1ff79 100644
@@ -63,6 +64,26 @@ index 965bf52..3e1ff79 100644
  &spi2 {
  	status = "okay";
  	assigned-clocks = <&cru CLK_SPI2>;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+index acb6a5f..13fc9fb 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+@@ -1915,6 +1915,15 @@
+ 		};
+ 	};
+ 
++	sfc: spi@fe2b0000 {
++		compatible = "rockchip,sfc";
++		reg = <0x0 0xfe2b0000 0x0 0x4000>;
++		interrupts = <GIC_SPI 206 IRQ_TYPE_LEVEL_HIGH 0>;
++		clocks = <&cru SCLK_SFC>, <&cru HCLK_SFC>;
++		clock-names = "clk_sfc", "hclk_sfc";
++		status = "disabled";
++	};
++
+ 	sata0: sata@fe210000 {
+ 		compatible = "rockchip,rk3588-dwc-ahci", "snps,dwc-ahci";
+ 		reg = <0 0xfe210000 0 0x1000>;
 -- 
 2.40.1
 

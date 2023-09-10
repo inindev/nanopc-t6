@@ -1,4 +1,4 @@
-From 08b4fb64d756d2159b52bff05275a26dfbdc4768 Mon Sep 17 00:00:00 2001
+From 0466a80bc11c06460202c3a2677ff52f219e0cc2 Mon Sep 17 00:00:00 2001
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 Date: Thu, 20 Jul 2023 18:59:37 +0200
 Subject: [PATCH 48/83] usb: dwc3: add optional PHY interface clocks
@@ -14,7 +14,7 @@ Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
  2 files changed, 30 insertions(+)
 
 diff --git a/drivers/usb/dwc3/core.c b/drivers/usb/dwc3/core.c
-index 9c6bf054f..fc60d5f56 100644
+index 9c6bf05..fc60d5f 100644
 --- a/drivers/usb/dwc3/core.c
 +++ b/drivers/usb/dwc3/core.c
 @@ -817,8 +817,20 @@ static int dwc3_clk_enable(struct dwc3 *dwc)
@@ -67,7 +67,7 @@ index 9c6bf054f..fc60d5f56 100644
  }
  
 diff --git a/drivers/usb/dwc3/core.h b/drivers/usb/dwc3/core.h
-index a69ac67d8..f5e6ae6e3 100644
+index a69ac67..f5e6ae6 100644
 --- a/drivers/usb/dwc3/core.h
 +++ b/drivers/usb/dwc3/core.h
 @@ -991,6 +991,8 @@ struct dwc3_scratchpad_array {

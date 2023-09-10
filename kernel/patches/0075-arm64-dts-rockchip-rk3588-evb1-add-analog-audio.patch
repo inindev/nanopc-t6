@@ -1,4 +1,4 @@
-From e85af01b569fcda049c682fd6ffad7d9b26ce346 Mon Sep 17 00:00:00 2001
+From f6fe5d48790b5a07c8e3e0775eaee7f6497fda86 Mon Sep 17 00:00:00 2001
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 Date: Fri, 21 Jul 2023 16:59:40 +0200
 Subject: [PATCH 75/83] arm64: dts: rockchip: rk3588-evb1: add analog audio
@@ -17,7 +17,7 @@ Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
  1 file changed, 95 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts b/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
-index a3badf683..bc29e7ea0 100644
+index a3badf6..bc29e7e 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
 @@ -57,6 +57,65 @@ button-escape {

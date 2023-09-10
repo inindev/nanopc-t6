@@ -1,4 +1,4 @@
-From 68101bd23f71d2ea550162bdaa79638ba12663a7 Mon Sep 17 00:00:00 2001
+From 5536698be91a6147123c8f54de29578c3a62a28a Mon Sep 17 00:00:00 2001
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 Date: Mon, 10 Jul 2023 19:51:11 +0200
 Subject: [PATCH 33/83] dt-bindings: phy: rockchip: add RK3588 PCIe v3 phy
@@ -14,7 +14,7 @@ Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
  1 file changed, 28 insertions(+), 5 deletions(-)
 
 diff --git a/Documentation/devicetree/bindings/phy/rockchip,pcie3-phy.yaml b/Documentation/devicetree/bindings/phy/rockchip,pcie3-phy.yaml
-index 9f2d8d2cc..c4fbffcde 100644
+index 9f2d8d2..c4fbffc 100644
 --- a/Documentation/devicetree/bindings/phy/rockchip,pcie3-phy.yaml
 +++ b/Documentation/devicetree/bindings/phy/rockchip,pcie3-phy.yaml
 @@ -13,19 +13,18 @@ properties:

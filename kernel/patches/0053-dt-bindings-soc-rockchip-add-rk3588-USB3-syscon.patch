@@ -1,4 +1,4 @@
-From 56b27bce61a288bd1f96df5be09d53d45d104951 Mon Sep 17 00:00:00 2001
+From e17e534405f6d80ce25b5a6d09418b4b48589f27 Mon Sep 17 00:00:00 2001
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 Date: Tue, 30 May 2023 18:49:48 +0200
 Subject: [PATCH 53/83] dt-bindings: soc: rockchip: add rk3588 USB3 syscon
@@ -11,7 +11,7 @@ Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
  1 file changed, 22 insertions(+)
 
 diff --git a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
-index e4fa6a07b..ce1fd5b0d 100644
+index e4fa6a0..ce1fd5b 100644
 --- a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
 +++ b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
 @@ -28,6 +28,9 @@ properties:

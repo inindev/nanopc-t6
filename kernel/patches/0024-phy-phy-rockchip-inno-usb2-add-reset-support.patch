@@ -1,4 +1,4 @@
-From c0682ec6fc37101ec020a8b69b11b65fc0d757e7 Mon Sep 17 00:00:00 2001
+From df1bd16054e4156431e4e856a029dfb09e84eb7e Mon Sep 17 00:00:00 2001
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 Date: Mon, 3 Apr 2023 20:23:14 +0200
 Subject: [PATCH 24/83] phy: phy-rockchip-inno-usb2: add reset support
@@ -12,7 +12,7 @@ Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
  1 file changed, 38 insertions(+)
 
 diff --git a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-index 2c4683c67..101b46939 100644
+index 2c4683c..101b469 100644
 --- a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
 +++ b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
 @@ -24,6 +24,7 @@

@@ -1,4 +1,4 @@
-From b135b78123ad69940bd53046e330df3766b2c911 Mon Sep 17 00:00:00 2001
+From 85c4998c0853e7de47666c7cea9958067b4a943d Mon Sep 17 00:00:00 2001
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 Date: Thu, 30 Mar 2023 15:44:36 +0200
 Subject: [PATCH 31/83] arm64: dts: rockchip: rk3588-rock5b: add USB2
@@ -16,7 +16,7 @@ Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
  1 file changed, 55 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-index fae91522c..49d5eb886 100644
+index fae9152..49d5eb8 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
 @@ -43,6 +43,20 @@ fan: pwm-fan {

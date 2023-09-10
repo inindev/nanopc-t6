@@ -1,4 +1,4 @@
-From c8aefdae9cce9211062a753a878d9ae573e198e2 Mon Sep 17 00:00:00 2001
+From 161b07f20b39b672dd676c3bba793042579e7a6b Mon Sep 17 00:00:00 2001
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 Date: Tue, 25 Jul 2023 18:49:43 +0200
 Subject: [PATCH 74/83] dt-bindings: es8328: convert to DT schema format
@@ -15,7 +15,7 @@ Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 
 diff --git a/Documentation/devicetree/bindings/sound/es8328.txt b/Documentation/devicetree/bindings/sound/es8328.txt
 deleted file mode 100644
-index 33fbf058c..000000000
+index 33fbf05..0000000
 --- a/Documentation/devicetree/bindings/sound/es8328.txt
 +++ /dev/null
 @@ -1,38 +0,0 @@
@@ -59,7 +59,7 @@ index 33fbf058c..000000000
 -};
 diff --git a/Documentation/devicetree/bindings/sound/everest,es8328.yaml b/Documentation/devicetree/bindings/sound/everest,es8328.yaml
 new file mode 100644
-index 000000000..85f680574
+index 0000000..85f6805
 --- /dev/null
 +++ b/Documentation/devicetree/bindings/sound/everest,es8328.yaml
 @@ -0,0 +1,77 @@

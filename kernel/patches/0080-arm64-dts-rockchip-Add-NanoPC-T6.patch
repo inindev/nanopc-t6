@@ -1,4 +1,4 @@
-From 9113a595371fcf69fd73255ccdbd3895657b411b Mon Sep 17 00:00:00 2001
+From d0149c7487db2a68f74a616070edf6f969b4c342 Mon Sep 17 00:00:00 2001
 From: Thomas McKahan <tmckahan@singleboardsolutions.com>
 Date: Wed, 9 Aug 2023 07:21:17 -0400
 Subject: [PATCH 80/83] arm64: dts: rockchip: Add NanoPC T6
@@ -17,7 +17,7 @@ Signed-off-by: Thomas McKahan <tmckahan@singleboardsolutions.com>
  create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dts
 
 diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-index b7fb908eb..5d86ad684 100644
+index b7fb908..5d86ad6 100644
 --- a/arch/arm64/boot/dts/rockchip/Makefile
 +++ b/arch/arm64/boot/dts/rockchip/Makefile
 @@ -98,6 +98,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-rock-3a.dtb
@@ -30,7 +30,7 @@ index b7fb908eb..5d86ad684 100644
  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-khadas-edge2.dtb
 diff --git a/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dts b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dts
 new file mode 100644
-index 000000000..58e9b0d8b
+index 0000000..58e9b0d
 --- /dev/null
 +++ b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dts
 @@ -0,0 +1,842 @@

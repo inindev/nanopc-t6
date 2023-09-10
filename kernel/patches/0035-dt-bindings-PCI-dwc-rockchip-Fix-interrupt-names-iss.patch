@@ -1,4 +1,4 @@
-From 764462e18e02ff2a408c9cf376974742ba9f7bda Mon Sep 17 00:00:00 2001
+From 0d50129252e2e0f8c7b1b44f8b1857b0bdc8fbfc Mon Sep 17 00:00:00 2001
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 Date: Sat, 15 Jul 2023 00:39:28 +0200
 Subject: [PATCH 35/83] dt-bindings: PCI: dwc: rockchip: Fix interrupt-names
@@ -31,7 +31,7 @@ Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
  1 file changed, 42 insertions(+), 1 deletion(-)
 
 diff --git a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
-index a4f61ced5..7836b9a55 100644
+index a4f61ce..7836b9a 100644
 --- a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
 +++ b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
 @@ -17,7 +17,8 @@ description: |+

@@ -1,4 +1,4 @@
-From 7c99d9f4cd6460c4b8a7d5a301f2d989e47ecc85 Mon Sep 17 00:00:00 2001
+From dfa316c4a6082bd8e34a8ab44753f899fdd1c189 Mon Sep 17 00:00:00 2001
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 Date: Wed, 26 Apr 2023 21:18:43 +0200
 Subject: [PATCH 57/83] arm64: dts: rockchip: rk3588-evb1: add USB3
@@ -12,7 +12,7 @@ Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
  1 file changed, 144 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts b/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
-index caf8b70d3..aa484be67 100644
+index caf8b70..aa484be 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
 @@ -8,6 +8,7 @@

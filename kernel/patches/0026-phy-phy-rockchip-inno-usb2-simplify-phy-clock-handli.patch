@@ -1,4 +1,4 @@
-From b6e7693946e10ccb96b10c9ca13663ec9aa8d85a Mon Sep 17 00:00:00 2001
+From 75176f638c7b58e454e78ac50e1a5c3f6c712378 Mon Sep 17 00:00:00 2001
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 Date: Mon, 3 Apr 2023 21:49:58 +0200
 Subject: [PATCH 26/83] phy: phy-rockchip-inno-usb2: simplify phy clock
@@ -14,7 +14,7 @@ Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
  1 file changed, 6 insertions(+), 13 deletions(-)
 
 diff --git a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-index aa8c55609..1cf84869e 100644
+index aa8c556..1cf8486 100644
 --- a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
 +++ b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
 @@ -1390,24 +1390,22 @@ static int rockchip_usb2phy_probe(struct platform_device *pdev)

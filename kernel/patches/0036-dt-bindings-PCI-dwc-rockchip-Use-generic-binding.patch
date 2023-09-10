@@ -1,4 +1,4 @@
-From 3914467d7fa01d0530c5936efdbb6c2b16f4ac3c Mon Sep 17 00:00:00 2001
+From de8b26cdd3c1431819ff061af8888f0e6f42b8d0 Mon Sep 17 00:00:00 2001
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 Date: Mon, 17 Jul 2023 17:07:48 +0200
 Subject: [PATCH 36/83] dt-bindings: PCI: dwc: rockchip: Use generic binding
@@ -13,7 +13,7 @@ Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
  2 files changed, 6 insertions(+), 3 deletions(-)
 
 diff --git a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
-index 7836b9a55..ad9954f7f 100644
+index 7836b9a..ad9954f 100644
 --- a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
 +++ b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
 @@ -17,8 +17,7 @@ description: |+
@@ -27,7 +27,7 @@ index 7836b9a55..ad9954f7f 100644
  properties:
    compatible:
 diff --git a/Documentation/devicetree/bindings/pci/snps,dw-pcie.yaml b/Documentation/devicetree/bindings/pci/snps,dw-pcie.yaml
-index d2b4fb8f6..8bbdeb882 100644
+index d2b4fb8..8bbdeb8 100644
 --- a/Documentation/devicetree/bindings/pci/snps,dw-pcie.yaml
 +++ b/Documentation/devicetree/bindings/pci/snps,dw-pcie.yaml
 @@ -196,12 +196,16 @@ properties:

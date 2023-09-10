@@ -1,4 +1,4 @@
-From f451bba29db9ef5e6479fae4556dd66441289691 Mon Sep 17 00:00:00 2001
+From 7b27491fb6c016ea67000865c614be1e38df256e Mon Sep 17 00:00:00 2001
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 Date: Thu, 25 May 2023 19:45:02 +0200
 Subject: [PATCH 63/83] arm64: dts: rockchip: enable RK3588 tsadc by default
@@ -11,7 +11,7 @@ Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
  1 file changed, 1 deletion(-)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-index aa78f535b..acb6a5ff8 100644
+index aa78f53..acb6a5f 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
 +++ b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
 @@ -2599,7 +2599,6 @@ tsadc: tsadc@fec00000 {

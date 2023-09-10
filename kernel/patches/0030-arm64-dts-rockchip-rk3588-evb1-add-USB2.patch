@@ -1,4 +1,4 @@
-From c56a260dd79c771a5926b8b5dd9c30f32de9890a Mon Sep 17 00:00:00 2001
+From 0070b4dc325d45ed4ff7f3a7a5023f78ff4feda5 Mon Sep 17 00:00:00 2001
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 Date: Thu, 12 Jan 2023 19:23:27 +0100
 Subject: [PATCH 30/83] arm64: dts: rockchip: rk3588-evb1: add USB2
@@ -11,7 +11,7 @@ Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
  1 file changed, 74 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts b/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
-index eeab8f047..378d285a9 100644
+index eeab8f0..378d285 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
 @@ -38,6 +38,20 @@ vcc12v_dcin: vcc12v-dcin-regulator {

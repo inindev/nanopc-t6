@@ -1,4 +1,4 @@
-From 1add0f032877bfcae716db37332f49eff7122c6d Mon Sep 17 00:00:00 2001
+From 4f1140a3714044cdeb9262418d44c8c056e4ac8d Mon Sep 17 00:00:00 2001
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 Date: Tue, 25 Jul 2023 15:47:18 +0200
 Subject: [PATCH 46/83] arm64: defconfig: enable Synopsys AHCI SATA support
@@ -12,7 +12,7 @@ Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
  1 file changed, 1 insertion(+)
 
 diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
-index 022d0026d..32c44738c 100644
+index 022d002..32c4473 100644
 --- a/arch/arm64/configs/defconfig
 +++ b/arch/arm64/configs/defconfig
 @@ -299,6 +299,7 @@ CONFIG_SATA_AHCI=y

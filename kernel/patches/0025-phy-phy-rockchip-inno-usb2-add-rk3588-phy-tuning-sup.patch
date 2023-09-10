@@ -1,4 +1,4 @@
-From 9bfdd273cb2da374639b290ec2346f8314e745a8 Mon Sep 17 00:00:00 2001
+From c07f5b9bf4f1ddbd6693bf5c5a6b3fc2adace888 Mon Sep 17 00:00:00 2001
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 Date: Mon, 3 Apr 2023 20:24:06 +0200
 Subject: [PATCH 25/83] phy: phy-rockchip-inno-usb2: add rk3588 phy tuning
@@ -18,7 +18,7 @@ Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
  1 file changed, 63 insertions(+)
 
 diff --git a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-index 101b46939..aa8c55609 100644
+index 101b469..aa8c556 100644
 --- a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
 +++ b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
 @@ -33,6 +33,8 @@

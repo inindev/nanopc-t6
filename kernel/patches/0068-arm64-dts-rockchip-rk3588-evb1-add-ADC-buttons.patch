@@ -1,4 +1,4 @@
-From 7e76a652e08ac27e11765094cad70d1bb4b87de4 Mon Sep 17 00:00:00 2001
+From dbb81472d197485c36056c1184001d6f73695b98 Mon Sep 17 00:00:00 2001
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 Date: Fri, 21 Jul 2023 15:47:00 +0200
 Subject: [PATCH 68/83] arm64: dts: rockchip: rk3588-evb1: add ADC buttons
@@ -12,7 +12,7 @@ Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
  1 file changed, 38 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts b/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
-index 931bdc217..9c5d26217 100644
+index 931bdc2..9c5d262 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
 @@ -7,6 +7,7 @@

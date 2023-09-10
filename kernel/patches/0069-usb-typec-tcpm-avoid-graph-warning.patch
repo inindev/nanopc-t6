@@ -1,4 +1,4 @@
-From a080a9db92578fdbdaa664d766cb5ba39ad68634 Mon Sep 17 00:00:00 2001
+From 453f771569ed6a14beb576b79328f0b36509519f Mon Sep 17 00:00:00 2001
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 Date: Fri, 28 Jul 2023 16:43:16 +0200
 Subject: [PATCH 69/83] usb: typec: tcpm: avoid graph warning
@@ -27,10 +27,10 @@ Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/usb/typec/tcpm/tcpm.c b/drivers/usb/typec/tcpm/tcpm.c
-index cc1d83926..ae0695f08 100644
+index bf97b81..034cfae 100644
 --- a/drivers/usb/typec/tcpm/tcpm.c
 +++ b/drivers/usb/typec/tcpm/tcpm.c
-@@ -6622,9 +6622,9 @@ struct tcpm_port *tcpm_register_port(struct device *dev, struct tcpc_dev *tcpc)
+@@ -6629,9 +6629,9 @@ struct tcpm_port *tcpm_register_port(struct device *dev, struct tcpc_dev *tcpc)
  	port->partner_desc.identity = &port->partner_ident;
  	port->port_type = port->typec_caps.type;
  

@@ -1,4 +1,4 @@
-From 120503b442017d59de13aba7a31bea4fb5df506e Mon Sep 17 00:00:00 2001
+From ca62e8ea1b3601c7e505294af56d6dd9cfbdeb4d Mon Sep 17 00:00:00 2001
 From: John Clark <inindev@gmail.com>
 Date: Wed, 6 Sep 2023 22:06:33 +0000
 Subject: [PATCH 83/83] arm64: dts: rockchip: add sfc node
@@ -6,11 +6,11 @@ Subject: [PATCH 83/83] arm64: dts: rockchip: add sfc node
 Signed-off-by: John Clark <inindev@gmail.com>
 ---
  .../boot/dts/rockchip/rk3588-nanopc-t6.dts    | 44 +++++++++++++++++++
- arch/arm64/boot/dts/rockchip/rk3588s.dtsi     | 11 +++++
- 2 files changed, 55 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3588s.dtsi     |  9 ++++
+ 2 files changed, 53 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dts b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dts
-index 965bf5263..3e1ff7914 100644
+index 965bf52..3e1ff79 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dts
 @@ -550,6 +550,50 @@ &sdmmc {
@@ -65,10 +65,10 @@ index 965bf5263..3e1ff7914 100644
  	status = "okay";
  	assigned-clocks = <&cru CLK_SPI2>;
 diff --git a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-index acb6a5ff8..1401601be 100644
+index acb6a5f..13fc9fb 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
 +++ b/arch/arm64/boot/dts/rockchip/rk3588s.dtsi
-@@ -1915,6 +1915,17 @@ gmac1_mtl_tx_setup: tx-queues-config {
+@@ -1915,6 +1915,15 @@ gmac1_mtl_tx_setup: tx-queues-config {
  		};
  	};
  
@@ -78,8 +78,6 @@ index acb6a5ff8..1401601be 100644
 +		interrupts = <GIC_SPI 206 IRQ_TYPE_LEVEL_HIGH 0>;
 +		clocks = <&cru SCLK_SFC>, <&cru HCLK_SFC>;
 +		clock-names = "clk_sfc", "hclk_sfc";
-+		pinctrl-0 = <&fspim2_pins>;
-+		pinctrl-names = "default";
 +		status = "disabled";
 +	};
 +

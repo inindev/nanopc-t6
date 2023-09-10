@@ -1,4 +1,4 @@
-From 0d71b4196e3487dc24adaf6a0316046c734663ab Mon Sep 17 00:00:00 2001
+From 9d0b2a93840fc041cce378aaee0433e89d428389 Mon Sep 17 00:00:00 2001
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 Date: Wed, 19 Apr 2023 18:27:12 +0200
 Subject: [PATCH 37/83] dt-bindings: PCI: dwc: rockchip: Add missing
@@ -17,7 +17,7 @@ Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
  1 file changed, 30 insertions(+)
 
 diff --git a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
-index ad9954f7f..1ae8dcfa0 100644
+index ad9954f..1ae8dcf 100644
 --- a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
 +++ b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
 @@ -93,6 +93,28 @@ properties:
