@@ -1,4 +1,4 @@
-From 45e96eaf24f96cbf7e5c3757858d68846d421388 Mon Sep 17 00:00:00 2001
+From 86d4f659f8da9b808a32e46fb73198abe6775e68 Mon Sep 17 00:00:00 2001
 From: Thomas McKahan <tmckahan@singleboardsolutions.com>
 Date: Wed, 9 Aug 2023 07:21:17 -0400
 Subject: [PATCH 2/5] arm64: dts: rockchip: Add NanoPC T6
