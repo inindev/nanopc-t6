@@ -24,8 +24,8 @@ config_fixups() {
 }
 
 main() {
-    local linux='https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/snapshot/linux-6.6-rc4.tar.gz'
-    local lxsha='f5bfa3cb0d889f136b92b88e31013e34a31fb66d7733d38ea119bdb6e8129f59'
+    local linux='https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/snapshot/linux-6.6-rc5.tar.gz'
+    local lxsha='76ba46811ee81567ce7db778d92d5e5cce905b8d847d8508365265a0358ffcac'
 
     local lf="$(basename "$linux")"
     local lv="$(echo "$lf" | sed -nE 's/linux-(.*)\.tar\..z/\1/p')"
