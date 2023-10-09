@@ -1,18 +1,79 @@
-From 8621d20df17bf439024bf33add8348c827a67914 Mon Sep 17 00:00:00 2001
+From 8ce26255030473c81e60057f8f14a5efaca80d3d Mon Sep 17 00:00:00 2001
 From: John Clark <inindev@gmail.com>
-Date: Mon, 7 Aug 2023 04:04:40 +0000
-Subject: [PATCH 09/11] friendly elec nanopc-t6 support
+Date: Mon, 9 Oct 2023 01:07:22 +0000
+Subject: [PATCH 3/4] board: rockchip: add FriendlyElec NanoPC-T6 rk3588 board
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+The NanoPC-T6 is a Rockchip RK3588 based SBC by FriendlyElec.
+
+There are four variants depending on the DRAM size: 4G/32GB eMMC,
+8G/64GB eMMC, 16G/16MB SPI NOR, and 16G/256GB eMMC/16MB SPI NOR
+
+Specifications:
+    CPU: Rockchip RK3588, 4x Cortex-A76 (up to 2.4GHz)
+                        + 4x Cortex-A55 (up to 1.8GHz)
+    GPU: Mali-G610 MP4
+    VPU: 8K@60fps H.265 and VP9 decoder, 8K@30fps H.264 decoder,
+         4K@60fps AV1 decoder, 8K@30fps H.264 and H.265 encoder
+    NPU: 6TOPs, supports INT4/INT8/INT16/FP16
+    RAM: 64-bit 4GB/8GB/16GB LPDDR4X at 2133MHz
+    eMMC: 0GB/32GB/64GB/256GB HS400
+    MicroSD Slot: MicroSD SDR104
+    PCIe 3.0: M.2 M-Key x1, PCIe 3.0 x4 for NVMe SSDs up to 2,500 MB/s
+    Ethernet: PCIe 2.5G 2x Ethernet (RTL8125BG)
+    PCIe 2.1: M.2 E-Key x1, PCIe 2.1 x1 and USB2.0 Host,
+              supports M.2 WiFi and Bluetooth
+    4G Module: MiniPCIe x1, MicroSIM Card Slot x1
+    Audio Out: 3.5mm jack for stereo headphone output
+    Audio In: 2.0mm PH-2A connector for analog microphone input
+    Video Input: standard HDMI input port, up to 4Kp60
+    2x 4-lane MIPI-CSI, compatible with MIPI V1.2
+    Video Output: 2x standard HDMI output ports compatible with HDMI2.1,
+                  HDMI2.0, and HDMI1.4
+    2x 4-lane MIPI-DSI, compatible with MIPI DPHY 2.0 or CPHY 1.1
+    USB-A: USB 3.0, Type A
+    USB-C: Full function USB Type‑C port, DP display up to 4Kp60, USB 3.0
+    40-pin 2.54mm header connector: up to 2x SPIs, 6x UARTs, 1x I2Cs,
+                                    8x PWMs, 2x I2Ss, 28x GPIOs
+    Debug UART: 3 Pin 2.54mm header, 3V level, 1500000bps
+    Onboard IR receiver: 38KHz carrier frequency
+    RTC Battery: 2 Pin 1.27/1.25mm RTC battery connector for low power
+                 RTC IC HYM8563TS
+    5V Fan connector
+    Working Temperature: 0C to 70C
+    Power: 5.5*2.1mm DC Jack, 12VDC input
+    Dimensions: 110x80x1.6mm (without case) / 86x114.5x30mm (with case)
+
+Kernel commits:
+893c17716d0c ("arm64: dts: rockchip: Add NanoPC T6")
+a721e28dfad2 ("arm64: dts: rockchip: Add NanoPC T6 PCIe Ethernet support")
+ac76b786cc37 ("arm64: dts: rockchip: Add NanoPC T6 PCIe e-key support")
 
 Signed-off-by: John Clark <inindev@gmail.com>
 ---
- arch/arm/dts/Makefile                     |   1 +
- arch/arm/dts/rk3588-nanopc-t6-u-boot.dtsi |  22 +
- arch/arm/dts/rk3588-nanopc-t6.dts         | 916 ++++++++++++++++++++++
- configs/nanopc-t6-rk3588_defconfig        | 116 +++
- 4 files changed, 1055 insertions(+)
+ arch/arm/dts/Makefile                         |   1 +
+ arch/arm/dts/rk3588-nanopc-t6-u-boot.dtsi     |  36 +
+ arch/arm/dts/rk3588-nanopc-t6.dts             | 916 ++++++++++++++++++
+ arch/arm/mach-rockchip/rk3588/Kconfig         |  46 +
+ arch/arm/mach-rockchip/spl.c                  |   8 +-
+ board/friendlyelec/nanopc-t6-rk3588/Kconfig   |  15 +
+ .../friendlyelec/nanopc-t6-rk3588/MAINTAINERS |   9 +
+ board/friendlyelec/nanopc-t6-rk3588/Makefile  |   6 +
+ .../nanopc-t6-rk3588/nanopc-t6-rk3588.c       |  39 +
+ configs/nanopc-t6-rk3588_defconfig            | 109 +++
+ doc/board/rockchip/rockchip.rst               |   1 +
+ include/configs/nanopc-t6-rk3588.h            |  15 +
+ 12 files changed, 1199 insertions(+), 2 deletions(-)
  create mode 100644 arch/arm/dts/rk3588-nanopc-t6-u-boot.dtsi
  create mode 100644 arch/arm/dts/rk3588-nanopc-t6.dts
+ create mode 100644 board/friendlyelec/nanopc-t6-rk3588/Kconfig
+ create mode 100644 board/friendlyelec/nanopc-t6-rk3588/MAINTAINERS
+ create mode 100644 board/friendlyelec/nanopc-t6-rk3588/Makefile
+ create mode 100644 board/friendlyelec/nanopc-t6-rk3588/nanopc-t6-rk3588.c
  create mode 100644 configs/nanopc-t6-rk3588_defconfig
+ create mode 100644 include/configs/nanopc-t6-rk3588.h
 
 diff --git a/arch/arm/dts/Makefile b/arch/arm/dts/Makefile
 index 85fd5b1157..70c0d6721a 100644
@@ -28,11 +89,15 @@ index 85fd5b1157..70c0d6721a 100644
  
 diff --git a/arch/arm/dts/rk3588-nanopc-t6-u-boot.dtsi b/arch/arm/dts/rk3588-nanopc-t6-u-boot.dtsi
 new file mode 100644
-index 0000000000..4d7b104193
+index 0000000000..87831c9d43
 --- /dev/null
 +++ b/arch/arm/dts/rk3588-nanopc-t6-u-boot.dtsi
-@@ -0,0 +1,22 @@
+@@ -0,0 +1,36 @@
 +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
++/*
++ * Copyright (c) 2023 John Clark <inindev@gmail.com>
++ *
++ */
 +
 +#include "rk3588-u-boot.dtsi"
 +
@@ -49,14 +114,24 @@ index 0000000000..4d7b104193
 +&sfc {
 +	bootph-pre-ram;
 +	u-boot,spl-sfc-no-dma;
++	pinctrl-names = "default";
++	pinctrl-0 = <&fspim1_pins>;
++	#address-cells = <1>;
++	#size-cells = <0>;
++	status = "okay";
 +
 +	flash@0 {
 +		bootph-pre-ram;
++		compatible = "jedec,spi-nor";
++		reg = <0>;
++		spi-max-frequency = <24000000>;
++		spi-rx-bus-width = <4>;
++		spi-tx-bus-width = <1>;
 +	};
 +};
 diff --git a/arch/arm/dts/rk3588-nanopc-t6.dts b/arch/arm/dts/rk3588-nanopc-t6.dts
 new file mode 100644
-index 0000000000..965bf5263d
+index 0000000000..97af4f9128
 --- /dev/null
 +++ b/arch/arm/dts/rk3588-nanopc-t6.dts
 @@ -0,0 +1,916 @@
@@ -88,6 +163,25 @@ index 0000000000..965bf5263d
 +		stdout-path = "serial2:1500000n8";
 +	};
 +
++	leds {
++		compatible = "gpio-leds";
++
++		sys_led: led-0 {
++			gpios = <&gpio2 RK_PB7 GPIO_ACTIVE_HIGH>;
++			label = "system-led";
++			linux,default-trigger = "heartbeat";
++			pinctrl-names = "default";
++			pinctrl-0 = <&sys_led_pin>;
++		};
++
++		usr_led: led-1 {
++			gpios = <&gpio2 RK_PC0 GPIO_ACTIVE_HIGH>;
++			label = "user-led";
++			pinctrl-names = "default";
++			pinctrl-0 = <&usr_led_pin>;
++		};
++	};
++
 +	sound {
 +		compatible = "simple-audio-card";
 +		pinctrl-names = "default";
@@ -114,25 +208,6 @@ index 0000000000..965bf5263d
 +		};
 +		simple-audio-card,codec {
 +			sound-dai = <&rt5616>;
-+		};
-+	};
-+
-+	leds {
-+		compatible = "gpio-leds";
-+
-+		sys_led: led-0 {
-+			gpios = <&gpio2 RK_PB7 GPIO_ACTIVE_HIGH>;
-+			label = "system-led";
-+			pinctrl-names = "default";
-+			pinctrl-0 = <&sys_led_pin>;
-+			linux,default-trigger = "heartbeat";
-+		};
-+
-+		usr_led: led-1 {
-+			gpios = <&gpio2 RK_PC0 GPIO_ACTIVE_HIGH>;
-+			label = "user-led";
-+			pinctrl-names = "default";
-+			pinctrl-0 = <&usr_led_pin>;
 +		};
 +	};
 +
@@ -976,12 +1051,188 @@ index 0000000000..965bf5263d
 +&usb_host1_ohci {
 +	status = "okay";
 +};
+diff --git a/arch/arm/mach-rockchip/rk3588/Kconfig b/arch/arm/mach-rockchip/rk3588/Kconfig
+index 79fcc99b89..1ff6b7d2cd 100644
+--- a/arch/arm/mach-rockchip/rk3588/Kconfig
++++ b/arch/arm/mach-rockchip/rk3588/Kconfig
+@@ -6,6 +6,51 @@ config TARGET_EVB_RK3588
+ 	help
+ 	  RK3588 EVB is a evaluation board for Rockchp RK3588.
+ 
++config TARGET_NANOPCT6_RK3588
++	bool "FriendlyElec NanoPC-T6 RK3588 board"
++	select BOARD_LATE_INIT
++	help
++	  The NanoPC-T6 is a Rockchip RK3588 based SBC by FriendlyElec.
++
++	  There are four variants depending on the DRAM size: 4G/32GB eMMC,
++	  8G/64GB eMMC, 16G/16MB SPI NOR, and 16G/256GB eMMC/16MB SPI NOR
++
++	  Specifications:
++
++	  CPU: Rockchip RK3588, 4x Cortex-A76 (up to 2.4GHz)
++	                      + 4x Cortex-A55 (up to 1.8GHz)
++	  GPU: Mali-G610 MP4
++	  VPU: 8K@60fps H.265 and VP9 decoder, 8K@30fps H.264 decoder,
++	       4K@60fps AV1 decoder, 8K@30fps H.264 and H.265 encoder
++	  NPU: 6TOPs, supports INT4/INT8/INT16/FP16
++	  RAM: 64-bit 4GB/8GB/16GB LPDDR4X at 2133MHz
++	  eMMC: 0GB/32GB/64GB/256GB HS400
++	  MicroSD Slot: MicroSD SDR104
++	  PCIe 3.0: M.2 M-Key x1, PCIe 3.0 x4 for NVMe SSDs up to 2,500 MB/s
++	  Ethernet: PCIe 2.5G 2x Ethernet (RTL8125BG)
++	  PCIe 2.1: M.2 E-Key x1, PCIe 2.1 x1 and USB2.0 Host,
++	            supports M.2 WiFi and Bluetooth
++	  4G Module: MiniPCIe x1, MicroSIM Card Slot x1
++	  Audio Out: 3.5mm jack for stereo headphone output
++	  Audio In: 2.0mm PH-2A connector for analog microphone input
++	  Video Input: standard HDMI input port, up to 4Kp60
++	  2x 4-lane MIPI-CSI, compatible with MIPI V1.2
++	  Video Output: 2x standard HDMI output ports compatible with HDMI2.1,
++	                HDMI2.0, and HDMI1.4
++	  2x 4-lane MIPI-DSI, compatible with MIPI DPHY 2.0 or CPHY 1.1
++	  USB-A: USB 3.0, Type A
++	  USB-C: Full function USB Type‑C port, DP display up to 4Kp60, USB 3.0
++	  40-pin 2.54mm header connector: up to 2x SPIs, 6x UARTs, 1x I2Cs,
++	                                  8x PWMs, 2x I2Ss, 28x GPIOs
++	  Debug UART: 3 Pin 2.54mm header, 3V level, 1500000bps
++	  Onboard IR receiver: 38KHz carrier frequency
++	  RTC Battery: 2 Pin 1.27/1.25mm RTC battery connector for low power
++	               RTC IC HYM8563TS
++	  5V Fan connector
++	  Working Temperature: 0C to 70C
++	  Power: 5.5*2.1mm DC Jack, 12VDC input
++	  Dimensions: 110x80x1.6mm (without case) / 86x114.5x30mm (with case)
++
+ config TARGET_RK3588_NEU6
+ 	bool "Edgeble Neural Compute Module 6(Neu6) SoM"
+ 	select BOARD_LATE_INIT
+@@ -93,6 +138,7 @@ config SYS_MALLOC_F_LEN
+ 	default 0x80000
+ 
+ source board/edgeble/neural-compute-module-6/Kconfig
++source board/friendlyelec/nanopc-t6-rk3588/Kconfig
+ source board/rockchip/evb_rk3588/Kconfig
+ source board/radxa/rock5a-rk3588s/Kconfig
+ source board/radxa/rock5b-rk3588/Kconfig
+diff --git a/arch/arm/mach-rockchip/spl.c b/arch/arm/mach-rockchip/spl.c
+index 87280e2ba7..a9e5b7cb78 100644
+--- a/arch/arm/mach-rockchip/spl.c
++++ b/arch/arm/mach-rockchip/spl.c
+@@ -35,8 +35,12 @@ const char *board_spl_was_booted_from(void)
+ 	u32  bootdevice_brom_id = readl(BROM_BOOTSOURCE_ID_ADDR);
+ 	const char *bootdevice_ofpath = NULL;
+ 
+-	if (bootdevice_brom_id < ARRAY_SIZE(boot_devices))
+-		bootdevice_ofpath = boot_devices[bootdevice_brom_id];
++	if (bootdevice_brom_id < ARRAY_SIZE(boot_devices)) {
++		if (IS_ENABLED(CONFIG_TARGET_NANOPCT6_RK3588) && bootdevice_brom_id == 4)
++			bootdevice_ofpath = boot_devices[BROM_BOOTSOURCE_SPINOR];
++		else
++			bootdevice_ofpath = boot_devices[bootdevice_brom_id];
++	}
+ 
+ 	if (bootdevice_ofpath)
+ 		debug("%s: brom_bootdevice_id %x maps to '%s'\n",
+diff --git a/board/friendlyelec/nanopc-t6-rk3588/Kconfig b/board/friendlyelec/nanopc-t6-rk3588/Kconfig
+new file mode 100644
+index 0000000000..032ef48610
+--- /dev/null
++++ b/board/friendlyelec/nanopc-t6-rk3588/Kconfig
+@@ -0,0 +1,15 @@
++if TARGET_NANOPCT6_RK3588
++
++config SYS_BOARD
++	default "nanopc-t6-rk3588"
++
++config SYS_VENDOR
++	default "friendlyelec"
++
++config SYS_CONFIG_NAME
++	default "nanopc-t6-rk3588"
++
++config BOARD_SPECIFIC_OPTIONS # dummy
++	def_bool y
++
++endif
+diff --git a/board/friendlyelec/nanopc-t6-rk3588/MAINTAINERS b/board/friendlyelec/nanopc-t6-rk3588/MAINTAINERS
+new file mode 100644
+index 0000000000..63ff6fafc8
+--- /dev/null
++++ b/board/friendlyelec/nanopc-t6-rk3588/MAINTAINERS
+@@ -0,0 +1,9 @@
++NANOPCT6-RK3588
++M:	John Clark <inindev@gmail.com>
++R:	Jonas Karlman <jonas@kwiboo.se>
++S:	Maintained
++F:	board/friendlyelec/nanopc-t6-rk3588
++F:	include/configs/nanopc-t6-rk3588.h
++F:	configs/nanopc-t6-rk3588_defconfig
++F:	arch/arm/dts/rk3588-nanopc-t6.dts
++F:	arch/arm/dts/rk3588-nanopc-t6-u-boot.dtsi
+diff --git a/board/friendlyelec/nanopc-t6-rk3588/Makefile b/board/friendlyelec/nanopc-t6-rk3588/Makefile
+new file mode 100644
+index 0000000000..c1c49b1970
+--- /dev/null
++++ b/board/friendlyelec/nanopc-t6-rk3588/Makefile
+@@ -0,0 +1,6 @@
++# SPDX-License-Identifier:     GPL-2.0+
++#
++# Copyright (c) 2023 Rockchip Electronics Co,. Ltd.
++#
++
++obj-y += nanopc-t6-rk3588.o
+diff --git a/board/friendlyelec/nanopc-t6-rk3588/nanopc-t6-rk3588.c b/board/friendlyelec/nanopc-t6-rk3588/nanopc-t6-rk3588.c
+new file mode 100644
+index 0000000000..99bbef964e
+--- /dev/null
++++ b/board/friendlyelec/nanopc-t6-rk3588/nanopc-t6-rk3588.c
+@@ -0,0 +1,39 @@
++// SPDX-License-Identifier: GPL-2.0+
++/*
++ * Copyright (c) 2023 Rockchip Electronics Co,. Ltd.
++ */
++
++#include <fdtdec.h>
++#include <fdt_support.h>
++
++#ifdef CONFIG_OF_BOARD_SETUP
++int nanopc_t6_add_reserved_memory_fdt_nodes(void *new_blob)
++{
++	struct fdt_memory gap1 = {
++		.start = 0x3fc000000,
++		.end = 0x3fc4fffff,
++	};
++	struct fdt_memory gap2 = {
++		.start = 0x3fff00000,
++		.end = 0x3ffffffff,
++	};
++	unsigned long flags = FDTDEC_RESERVED_MEMORY_NO_MAP;
++	unsigned int ret;
++
++	/*
++	 * Inject the reserved-memory nodes into the DTS
++	 */
++	ret = fdtdec_add_reserved_memory(new_blob, "gap1", &gap1,  NULL, 0,
++					 NULL, flags);
++	if (ret)
++		return ret;
++
++	return fdtdec_add_reserved_memory(new_blob, "gap2", &gap2,  NULL, 0,
++					  NULL, flags);
++}
++
++int ft_board_setup(void *blob, struct bd_info *bd)
++{
++	return nanopc_t6_add_reserved_memory_fdt_nodes(blob);
++}
++#endif
 diff --git a/configs/nanopc-t6-rk3588_defconfig b/configs/nanopc-t6-rk3588_defconfig
 new file mode 100644
-index 0000000000..73c6a0d3d3
+index 0000000000..daa13a4fff
 --- /dev/null
 +++ b/configs/nanopc-t6-rk3588_defconfig
-@@ -0,0 +1,116 @@
+@@ -0,0 +1,109 @@
 +CONFIG_ARM=y
 +CONFIG_SKIP_LOWLEVEL_INIT=y
 +CONFIG_SYS_HAS_NONCACHED_MEMORY=y
@@ -1001,7 +1252,7 @@ index 0000000000..73c6a0d3d3
 +CONFIG_ROCKCHIP_SPI_IMAGE=y
 +CONFIG_SPL_SERIAL=y
 +CONFIG_SPL_STACK_R_ADDR=0x600000
-+CONFIG_TARGET_EVB_RK3588=y
++CONFIG_TARGET_NANOPCT6_RK3588=y
 +CONFIG_SPL_STACK=0x400000
 +CONFIG_DEBUG_UART_BASE=0xFEB50000
 +CONFIG_DEBUG_UART_CLOCK=24000000
@@ -1010,7 +1261,6 @@ index 0000000000..73c6a0d3d3
 +CONFIG_SYS_LOAD_ADDR=0xc00800
 +CONFIG_PCI=y
 +CONFIG_DEBUG_UART=y
-+CONFIG_AHCI=y
 +CONFIG_FIT=y
 +CONFIG_FIT_VERBOSE=y
 +CONFIG_SPL_FIT_SIGNATURE=y
@@ -1029,7 +1279,7 @@ index 0000000000..73c6a0d3d3
 +# CONFIG_SPL_SHARES_INIT_SP_ADDR is not set
 +CONFIG_SPL_STACK_R=y
 +CONFIG_SPL_SPI_LOAD=y
-+CONFIG_SYS_SPI_U_BOOT_OFFS=0x100000
++CONFIG_SYS_SPI_U_BOOT_OFFS=0x60000
 +CONFIG_SPL_ATF=y
 +CONFIG_CMD_GPIO=y
 +CONFIG_CMD_GPT=y
@@ -1046,8 +1296,6 @@ index 0000000000..73c6a0d3d3
 +CONFIG_SPL_DM_SEQ_ALIAS=y
 +CONFIG_SPL_REGMAP=y
 +CONFIG_SPL_SYSCON=y
-+CONFIG_SCSI_AHCI=y
-+CONFIG_AHCI_PCI=y
 +CONFIG_SPL_CLK=y
 +CONFIG_ROCKCHIP_GPIO=y
 +CONFIG_SYS_I2C_ROCKCHIP=y
@@ -1063,6 +1311,7 @@ index 0000000000..73c6a0d3d3
 +CONFIG_SPI_FLASH_MACRONIX=y
 +CONFIG_SPI_FLASH_WINBOND=y
 +CONFIG_SPI_FLASH_XTX=y
++CONFIG_PHYLIB=y
 +CONFIG_RTL8169=y
 +CONFIG_NVME_PCI=y
 +CONFIG_PCIE_DW_ROCKCHIP=y
@@ -1070,11 +1319,8 @@ index 0000000000..73c6a0d3d3
 +CONFIG_PHY_ROCKCHIP_NANENG_COMBOPHY=y
 +CONFIG_PHY_ROCKCHIP_USBDP=y
 +CONFIG_SPL_PINCTRL=y
-+CONFIG_REGULATOR_PWM=y
 +CONFIG_PWM_ROCKCHIP=y
 +CONFIG_SPL_RAM=y
-+CONFIG_SCSI=y
-+CONFIG_DM_SCSI=y
 +CONFIG_BAUDRATE=1500000
 +CONFIG_DEBUG_UART_SHIFT=2
 +CONFIG_SYS_NS16550_MEM32=y
@@ -1083,14 +1329,12 @@ index 0000000000..73c6a0d3d3
 +CONFIG_USB=y
 +CONFIG_DM_USB_GADGET=y
 +CONFIG_USB_XHCI_HCD=y
-+# CONFIG_USB_XHCI_DWC3_OF_SIMPLE is not set
 +CONFIG_USB_EHCI_HCD=y
 +CONFIG_USB_EHCI_GENERIC=y
 +CONFIG_USB_OHCI_HCD=y
 +CONFIG_USB_OHCI_GENERIC=y
 +CONFIG_USB_DWC3=y
 +CONFIG_USB_DWC3_GENERIC=y
-+CONFIG_SPL_USB_DWC3_GENERIC=y
 +CONFIG_USB_HOST_ETHER=y
 +CONFIG_USB_ETHER_ASIX=y
 +CONFIG_USB_ETHER_ASIX88179=y
@@ -1098,6 +1342,39 @@ index 0000000000..73c6a0d3d3
 +CONFIG_USB_ETHER_RTL8152=y
 +CONFIG_USB_ETHER_SMSC95XX=y
 +CONFIG_ERRNO_STR=y
+diff --git a/doc/board/rockchip/rockchip.rst b/doc/board/rockchip/rockchip.rst
+index de9fe8e642..7db2cbf701 100644
+--- a/doc/board/rockchip/rockchip.rst
++++ b/doc/board/rockchip/rockchip.rst
+@@ -112,6 +112,7 @@ List of mainline supported Rockchip boards:
+      - Rockchip EVB (evb-rk3588)
+      - Edgeble Neural Compute Module 6A SoM - Neu6a (neu6a-io-rk3588)
+      - Edgeble Neural Compute Module 6B SoM - Neu6b (neu6b-io-rk3588)
++     - FriendlyElec NanoPC-T6 (nanopc-t6-rk3588)
+      - Radxa ROCK 5A (rock5a-rk3588s)
+      - Radxa ROCK 5B (rock5b-rk3588)
+ 
+diff --git a/include/configs/nanopc-t6-rk3588.h b/include/configs/nanopc-t6-rk3588.h
+new file mode 100644
+index 0000000000..1ece6f9383
+--- /dev/null
++++ b/include/configs/nanopc-t6-rk3588.h
+@@ -0,0 +1,15 @@
++/* SPDX-License-Identifier: GPL-2.0+ */
++/*
++ * Copyright (c) 2023 Rockchip Electronics Co., Ltd.
++ */
++
++#ifndef __NANOPCT6_RK3588_H
++#define __NANOPCT6_RK3588_H
++
++#define ROCKCHIP_DEVICE_SETTINGS \
++		"stdout=serial,vidconsole\0" \
++		"stderr=serial,vidconsole\0"
++
++#include <configs/rk3588_common.h>
++
++#endif /* __NANOPCT6_RK3588_H */
 -- 
-2.40.1
+2.42.0
 
