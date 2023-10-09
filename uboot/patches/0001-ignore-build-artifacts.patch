@@ -1,7 +1,7 @@
-From 5a849e587014afee63a7f72c3e76acee957f122d Mon Sep 17 00:00:00 2001
+From 1b027f58196aa620a003daace9dc772268148439 Mon Sep 17 00:00:00 2001
 From: John Clark <inindev@gmail.com>
 Date: Tue, 7 Mar 2023 01:47:26 +0000
-Subject: [PATCH 01/11] ignore build artifacts
+Subject: [PATCH 1/4] ignore build artifacts
 
 Signed-off-by: John Clark <inindev@gmail.com>
 ---
@@ -42,5 +42,5 @@ index 002f95de4f..47f06f14c7 100644
  
  # stgit generated dirs
 -- 
-2.40.1
+2.42.0
 
