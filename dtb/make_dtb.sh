@@ -9,8 +9,8 @@ set -e
 #   5: invalid file hash
 
 main() {
-    local linux='https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.5.5.tar.xz'
-    local lxsha='8cf10379f7df8ea731e09bff3d0827414e4b643dd41dc99d0af339669646ef95'
+    local linux='https://git.kernel.org/torvalds/t/linux-6.7-rc6.tar.gz'
+    local lxsha='864073e5042f9f7f39c5326833474f5567c202073e758ef4db030588e97cd702'
 
     local lf="$(basename "$linux")"
     local lv="$(echo "$lf" | sed -nE 's/linux-(.*)\.tar\..z/\1/p')"
@@ -25,7 +25,18 @@ main() {
 
     check_installed 'device-tree-compiler' 'gcc' 'wget' 'xz-utils'
 
-    [ -f "$lf" ] || wget "$linux"
+    if ! [ -e "$lf" ]; then
+        if [ -e "../kernel/$lf" ]; then
+            echo "using local copy of linux $lv"
+            cp -v "../kernel/$lf" .
+        elif [ -e "../kernel/kernel-$lv/$lf" ]; then
+            echo "using local copy of linux $lv"
+            cp -v "../kernel/kernel-$lv/$lf" .
+        else
+            print_hdr "downloading linux $lv"
+            wget "$linux"
+        fi
+    fi
 
     if [ "_$lxsha" != "_$(sha256sum "$lf" | cut -c1-64)" ]; then
         echo "invalid hash for linux source file: $lf"
@@ -34,7 +45,7 @@ main() {
 
     local rkpath="linux-$lv/arch/arm64/boot/dts/rockchip"
     if ! [ -d "linux-$lv" ]; then
-        tar xavf "$lf" "linux-$lv/include/dt-bindings" "linux-$lv/include/uapi" "$rkpath"
+        tar xavf "$lf" "linux-$lv/include/dt-bindings" "linux-$lv/include/uapi" "linux-$lv/drivers/clk/rockchip" "$rkpath"
 
         local patch patches="$(find patches -maxdepth 1 -name '*.patch' 2>/dev/null | sort)"
         for patch in $patches; do

@@ -11,9 +11,6 @@ set -e
 config_fixups() {
     local lpath=$1
 
-    # enable rockchip sfc
-    echo 'CONFIG_SPI_ROCKCHIP_SFC=m' >> "$lpath/arch/arm64/configs/defconfig"
-
     # enable realtek pci wireless
     echo 'CONFIG_RTW88=m' >> "$lpath/arch/arm64/configs/defconfig"
     echo 'CONFIG_RTW88_8822CE=m' >> "$lpath/arch/arm64/configs/defconfig"
@@ -24,8 +21,8 @@ config_fixups() {
 }
 
 main() {
-    local linux='https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.5.5.tar.xz'
-    local lxsha='8cf10379f7df8ea731e09bff3d0827414e4b643dd41dc99d0af339669646ef95'
+    local linux='https://git.kernel.org/torvalds/t/linux-6.7-rc6.tar.gz'
+    local lxsha='864073e5042f9f7f39c5326833474f5567c202073e758ef4db030588e97cd702'
 
     local lf="$(basename "$linux")"
     local lv="$(echo "$lf" | sed -nE 's/linux-(.*)\.tar\..z/\1/p')"
@@ -43,13 +40,24 @@ main() {
 
     check_installed 'screen' 'build-essential' 'python3' 'flex' 'bison' 'pahole' 'debhelper'  'bc' 'rsync' 'libncurses-dev' 'libelf-dev' 'libssl-dev' 'lz4' 'zstd'
 
-    if [ -z $STY ]; then
-        echo 'reminder: run from a screen session, this can take a while...'
+    if [ -z "$STY$TMUX" ]; then
+        echo 'reminder: run from a screen or a tmux session, this can take a while...'
         exit 7
     fi
 
     mkdir -p "kernel-$lv"
-    [ -f "kernel-$lv/$lf" ] || wget "$linux" -P "kernel-$lv"
+    if ! [ -e "kernel-$lv/$lf" ]; then
+        if [ -e "./$lf" ]; then
+            echo "linking local copy of linux $lv"
+            ln -sv "../$lf" "kernel-$lv/$lf"
+        elif [ -e "../dtb/$lf" ]; then
+            echo "using local copy of linux $lv"
+            cp -v "../dtb/$lf" "kernel-$lv"
+        else
+            echo "downloading linux $lv"
+            wget "$linux" -P "kernel-$lv"
+        fi
+    fi
 
     if [ "_$lxsha" != "_$(sha256sum "kernel-$lv/$lf" | cut -c1-64)" ]; then
         echo "invalid hash for linux source file: $lf"
@@ -71,11 +79,11 @@ main() {
         make -C "kernel-$lv/linux-$lv" mrproper
         [ -z "$1" ] || echo "$1" > "kernel-$lv/linux-$lv/.version"
         config_fixups "kernel-$lv/linux-$lv"
-        make -C "kernel-$lv/linux-$lv" ARCH=arm64 defconfig
+        make -C "kernel-$lv/linux-$lv" ARCH=arm64 inindev_defconfig
     fi
 
     echo "\n${h1}beginning compile...${rst}"
-    rm -f linux-image-*.deb
+    rm -f linux-*.deb
     local kv="$(make --no-print-directory -C "kernel-$lv/linux-$lv" kernelversion)"
     local bv="$(expr "$(cat "kernel-$lv/linux-$lv/.version" 2>/dev/null || echo 0)" + 1 2>/dev/null)"
     export SOURCE_DATE_EPOCH="$(stat -c %Y "kernel-$lv/linux-$lv/README")"
@@ -85,9 +93,12 @@ main() {
     export KBUILD_BUILD_USER='linux-kernel'
     export KBUILD_BUILD_VERSION="$bv"
 
-    nice make -C "kernel-$lv/linux-$lv" -j"$(nproc)" CC='gcc-13' bindeb-pkg KBUILD_IMAGE='arch/arm64/boot/Image' LOCALVERSION="-$bv-arm64"
-    echo "\n${cya}kernel package ready${mag}"
+    local t1=$(date +%s)
+    nice make -C "kernel-$lv/linux-$lv" -j"$(nproc)" CC="$(readlink /usr/bin/gcc)" bindeb-pkg KBUILD_IMAGE='arch/arm64/boot/Image' LOCALVERSION="-$bv-arm64"
+    local t2=$(date +%s)
+    echo "\n${cya}kernel package ready (elapsed: $(date -d@$((t2-t1)) '+%H:%M:%S'))${mag}"
     ln -sfv "kernel-$lv/linux-image-$kv-$bv-arm64_$kv-${bv}_arm64.deb"
+    ln -sfv "kernel-$lv/linux-headers-$kv-$bv-arm64_$kv-${bv}_arm64.deb"
     echo "${rst}"
 }
 
