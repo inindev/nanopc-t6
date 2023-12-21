@@ -1,7 +1,7 @@
 
 # Copyright (C) 2023, John Clark <inindev@gmail.com>
 
-LDIST ?= $(shell cat "debian/make_debian_img.sh" | sed -n 's/\s*local deb_dist=.\([[:alpha:]]\+\)./\1/p')
+LDIST ?= $(shell cat "debian/make_debian_img.sh" | sed -n 's/\s*local deb_dist=.\([[:alpha:]]\+\).*/\1/p')
 
 
 all: screen uboot dtb debian
@@ -26,9 +26,12 @@ package-%: all
 	@rm -rfv distfiles
 	@mkdir -v distfiles
 
-	@cp -v uboot/idbloader.img uboot/u-boot.itb distfiles
-	@cp -v dtb/rk3588-nanopc-t6.dtb distfiles
-	@cp -v debian/mmc_2g.img distfiles/nanopc-t6_$(LDIST)-$*.img
+	@install -vm 644 uboot/idbloader.img distfiles
+	@install -vm 644 uboot/u-boot.itb distfiles
+	@install -vm 644 dtb/rk3588-nanopc-t6.dtb distfiles
+	@install -vm 644 kernel/linux-image-*_arm64.deb distfiles
+	@install -vm 644 kernel/linux-headers-*_arm64.deb distfiles
+	@install -vm 644 debian/mmc_2g.img distfiles/nanopc-t6_$(LDIST)-$*.img
 	@xz -zve8 distfiles/nanopc-t6_$(LDIST)-$*.img
 
 	@cd distfiles ; sha256sum * > sha256sums.txt
@@ -37,12 +40,13 @@ clean:
 	@rm -rfv distfiles
 	sudo sh debian/make_debian_img.sh clean
 	sh dtb/make_dtb.sh clean
+	sh kernel/make_kernel.sh clean
 	sh uboot/make_uboot.sh clean
 	@echo "all targets clean"
 
 screen:
-ifeq ($(origin STY), undefined)
-	$(error please start a screen session)
+ifeq ($(STY)$(TMUX),)
+	$(error please start a screen or tmux session)
 endif
 
 debian/mmc_2g.img:
@@ -52,12 +56,12 @@ dtb/rk3588-nanopc-t6.dtb:
 	sh dtb/make_dtb.sh cp
 
 kernel/linux-image-*_arm64.deb:
-	sh kernel/make_kernel.sh
+	sh kernel/make_kernel.sh $(kver)
 
 uboot/idbloader.img uboot/u-boot.itb:
 	sh uboot/make_uboot.sh cp
 
 
-.PHONY: debian dtb kernel uboot all package-* clean screen
+.PHONY: all debian dtb kernel uboot package-* clean screen
 
 
