@@ -1,7 +1,7 @@
 From 210db8b1b1f61c472580905f0dd9f374711cf5e2 Mon Sep 17 00:00:00 2001
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 Date: Wed, 1 Nov 2023 16:42:58 +0200
-Subject: [PATCH 30/36] arm64: dts: rockchip: Add DT nodes for HDMI support in
+Subject: [PATCH 30/37] arm64: dts: rockchip: Add DT nodes for HDMI support in
  RK3588
 
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>

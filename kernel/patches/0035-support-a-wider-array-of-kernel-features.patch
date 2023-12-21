@@ -1,7 +1,7 @@
 From 811fdb8ca243f16578a6aa20591ba1dc4533210e Mon Sep 17 00:00:00 2001
 From: John Clark <inindev@gmail.com>
 Date: Tue, 12 Dec 2023 13:09:15 +0000
-Subject: [PATCH 35/36] support a wider array of kernel features
+Subject: [PATCH 35/37] support a wider array of kernel features
 
 Signed-off-by: John Clark <inindev@gmail.com>
 ---

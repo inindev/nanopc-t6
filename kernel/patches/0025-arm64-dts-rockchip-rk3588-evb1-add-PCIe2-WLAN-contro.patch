@@ -1,7 +1,7 @@
 From 6828270a033e934d86b95dd1d9f691a4cd5b5d13 Mon Sep 17 00:00:00 2001
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 Date: Fri, 14 Jul 2023 17:38:24 +0200
-Subject: [PATCH 25/36] arm64: dts: rockchip: rk3588-evb1: add PCIe2 WLAN
+Subject: [PATCH 25/37] arm64: dts: rockchip: rk3588-evb1: add PCIe2 WLAN
  controller
 
 Enable PCIe bus used by on-board PCIe Broadcom WLAN controller.

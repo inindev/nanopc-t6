@@ -1,0 +1,45 @@
+From f6175ea5543e0c11e03b1f244b6395e84378a68d Mon Sep 17 00:00:00 2001
+From: John Clark <inindev@gmail.com>
+Date: Thu, 21 Dec 2023 16:04:50 +0000
+Subject: [PATCH 2/2] arm64: dts: rockchip: rk806 pmic fixups
+
+Signed-off-by: John Clark <inindev@gmail.com>
+---
+ arch/arm/dts/rk3588-nanopc-t6.dts | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/arch/arm/dts/rk3588-nanopc-t6.dts b/arch/arm/dts/rk3588-nanopc-t6.dts
+index 97af4f9128..f881add166 100644
+--- a/arch/arm/dts/rk3588-nanopc-t6.dts
++++ b/arch/arm/dts/rk3588-nanopc-t6.dts
+@@ -560,7 +560,6 @@
+ 
+ 	pmic@0 {
+ 		compatible = "rockchip,rk806";
+-		spi-max-frequency = <1000000>;
+ 		reg = <0x0>;
+ 
+ 		interrupt-parent = <&gpio0>;
+@@ -569,6 +568,10 @@
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&pmic_pins>, <&rk806_dvs1_null>,
+ 			    <&rk806_dvs2_null>, <&rk806_dvs3_null>;
++		pmic-reset-func = <1>;
++		spi-max-frequency = <1000000>;
++
++		system-power-controller;
+ 
+ 		vcc1-supply = <&vcc4v0_sys>;
+ 		vcc2-supply = <&vcc4v0_sys>;
+@@ -590,7 +593,7 @@
+ 		#gpio-cells = <2>;
+ 
+ 		rk806_dvs1_null: dvs1-null-pins {
+-			pins = "gpio_pwrctrl2";
++			pins = "gpio_pwrctrl1";
+ 			function = "pin_fun0";
+ 		};
+ 
+-- 
+2.43.0
+

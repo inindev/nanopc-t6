@@ -1,7 +1,7 @@
 From 233101ead5ad12aed0e343a6892d5e12260ecc20 Mon Sep 17 00:00:00 2001
 From: John Clark <inindev@gmail.com>
 Date: Thu, 21 Dec 2023 19:44:52 +0000
-Subject: [PATCH 36/36] arm64: dts: rockchip: add sfc node
+Subject: [PATCH 36/37] arm64: dts: rockchip: add sfc node
 
 Signed-off-by: John Clark <inindev@gmail.com>
 ---
