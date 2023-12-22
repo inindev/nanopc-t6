@@ -1,9 +1,9 @@
 # nanopc-t6
 #### *Debian ARM64 Linux for the FriendlyElec NanoPC-T6*
 
-This Debian ARM64 Linux image is built directly from official packages using the Debian [Debootstrap](https://wiki.debian.org/Debootstrap) utility, see: https://github.com/inindev/nanopc-t6/blob/main/debian/make_debian_img.sh#L119
+This Debian ARM64 Linux image is built directly from official packages using the Debian [Debootstrap](https://wiki.debian.org/Debootstrap) utility, see: https://github.com/inindev/nanopc-t6/blob/main/debian/make_debian_img.sh#L128
 
-Most patches are directly available from the Debian repos using the built-in ```apt``` package manager, see: https://github.com/inindev/nanopc-t6/blob/main/debian/make_debian_img.sh#L351-L358
+Most patches are directly available from the Debian repos using the built-in ```apt``` package manager, see: https://github.com/inindev/nanopc-t6/blob/main/debian/make_debian_img.sh#L355-L362
 
 * Note: The kernel in this bundle is from kernel.org and will not get updates from debian.
 
@@ -16,7 +16,7 @@ Most patches are directly available from the Debian repos using the built-in ```
 
 **1. download image**
 ```
-wget https://github.com/inindev/nanopc-t6/releases/download/v12.0.1/nanopc-t6_bookworm-1201.img.xz
+wget https://github.com/inindev/nanopc-t6/releases/download/v12-6.7-rc6/nanopc-t6_bookworm-v12-6.7-rc6.img.xz
 ```
 
 <br/>
@@ -40,7 +40,9 @@ brw-rw---- 1 root disk 8, 0 Jul 15 10:33 /dev/sda
 
 **3. in the case above, substitute 'a' for 'X' in the command below (for /dev/sda)**
 ```
-sudo sh -c 'xzcat nanopc-t6_bookworm-1201.img.xz > /dev/sdX && sync'
+sudo su
+xzcat nanopc-t6_bookworm-v12-6.7-rc6.img.xz > /dev/sdX
+sync
 ```
 
 #### when the micro sd has finished imaging, eject it and boot the rock 5b to finish setup
@@ -94,12 +96,31 @@ sudo nano /etc/hosts
 <br/>
 
 ---
+### installing on m.2 ssd /dev/nvme0n1 media
+
+<br/>
+
+**1. while booted from mmc, download and copy the image file on to the ssd media**
+```
+wget https://github.com/inindev/nanopc-t6/releases/download/v12-6.7-rc6/nanopc-t6_bookworm-v12-6.7-rc6.img.xz
+sudo su
+xzcat nanopc-t6_bookworm-v12-6.7-rc6.img.xz > /dev/nvme0n1
+sync
+```
+
+<br/>
+
+**2. remove mmc media and reboot**
+
+<br/>
+
+---
 ### building debian bookworm arm64 for the nanopc-t6 from scratch
 
 <br/>
 
 The build script builds native arm64 binaries and thus needs to be run from an arm64 device such as an odroid m1 running 
-a 64 bit arm linux. The initial build of this project used a debian arm64 raspberry pi4, but now uses a rock 5b running 
+a 64 bit arm linux. The initial build of this project used a debian arm64 rock 5b, but now uses a nanopc t6 running 
 debian trixie arm64.
 
 <br/>
