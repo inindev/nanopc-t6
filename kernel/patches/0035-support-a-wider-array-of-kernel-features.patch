@@ -1,20 +1,20 @@
-From 811fdb8ca243f16578a6aa20591ba1dc4533210e Mon Sep 17 00:00:00 2001
+From dbaa132ca3426a34b4508251784028dd9f208ab0 Mon Sep 17 00:00:00 2001
 From: John Clark <inindev@gmail.com>
 Date: Tue, 12 Dec 2023 13:09:15 +0000
 Subject: [PATCH 35/37] support a wider array of kernel features
 
 Signed-off-by: John Clark <inindev@gmail.com>
 ---
- arch/arm64/configs/inindev_defconfig | 3804 ++++++++++++++++++++++++++
- 1 file changed, 3804 insertions(+)
+ arch/arm64/configs/inindev_defconfig | 3803 ++++++++++++++++++++++++++
+ 1 file changed, 3803 insertions(+)
  create mode 100644 arch/arm64/configs/inindev_defconfig
 
 diff --git a/arch/arm64/configs/inindev_defconfig b/arch/arm64/configs/inindev_defconfig
 new file mode 100644
-index 000000000..640e23cf3
+index 000000000..226530dd1
 --- /dev/null
 +++ b/arch/arm64/configs/inindev_defconfig
-@@ -0,0 +1,3804 @@
+@@ -0,0 +1,3803 @@
 +CONFIG_SYSVIPC=y
 +CONFIG_POSIX_MQUEUE=y
 +CONFIG_NO_HZ_FULL=y
@@ -2083,7 +2083,6 @@ index 000000000..640e23cf3
 +CONFIG_USB_HACKRF=m
 +CONFIG_USB_MSI2500=m
 +CONFIG_MEDIA_PCI_SUPPORT=y
-+CONFIG_VIDEO_SOLO6X10=m
 +CONFIG_VIDEO_TW5864=m
 +CONFIG_VIDEO_TW68=m
 +CONFIG_VIDEO_TW686X=m
