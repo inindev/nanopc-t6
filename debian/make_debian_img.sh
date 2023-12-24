@@ -57,13 +57,14 @@ main() {
 
     # linux firmware
     local lfw=$(download "$cache" 'https://mirrors.edge.kernel.org/pub/linux/kernel/firmware/linux-firmware-20230515.tar.xz')
-    local lfwsha='8b1acfa16f1ee94732a6acb50d9d6c835cf53af11068bd89ed207bbe04a1e951'
-    [ "$lfwsha" = $(sha256sum "$lfw" | cut -c1-64) ] || { echo "invalid hash for $lfw"; exit 5; }
+    local lfw_sha='8b1acfa16f1ee94732a6acb50d9d6c835cf53af11068bd89ed207bbe04a1e951'
+    [ -f "$lfw" ] || { echo "unable to fetch $lfw"; exit 4; }
+    [ "$lfw_sha" = $(sha256sum "$lfw" | cut -c1-64) ] || { echo "invalid hash for $lfw"; exit 5; }
 
     # u-boot
-    local uboot_spl=$(download "$cache" 'https://github.com/inindev/nanopc-t6/releases/download/v13-6.6-rc4/idbloader.img')
+    local uboot_spl=$(download "$cache" 'https://github.com/inindev/nanopc-t6/releases/download/v12-6.7-rc7/idbloader.img')
     [ -f "$uboot_spl" ] || { echo "unable to fetch $uboot_spl"; exit 4; }
-    local uboot_itb=$(download "$cache" 'https://github.com/inindev/nanopc-t6/releases/download/v13-6.6-rc4/u-boot.itb')
+    local uboot_itb=$(download "$cache" 'https://github.com/inindev/nanopc-t6/releases/download/v12-6.7-rc7/u-boot.itb')
     [ -f "$uboot_itb" ] || { echo "unable to fetch: $uboot_itb"; exit 4; }
 
     # setup media
@@ -240,17 +241,15 @@ mount_media() {
         mkdir -p "$mountpt"
     fi
 
-    local success_msg
+    local part
     if [ -b "$media" ]; then
         local rdn="$(basename "$media")"
         local sbpn="$(echo /sys/block/${rdn}/${rdn}*${partnum})"
-        local part="/dev/$(basename "$sbpn")"
+        part="/dev/$(basename "$sbpn")"
         mount -n "$part" "$mountpt"
-        success_msg="partition ${cya}$part${rst} successfully mounted on ${cya}$mountpt${rst}"
     elif [ -f "$media" ]; then
-        # hard-coded to p1
         mount -no loop,offset=16M "$media" "$mountpt"
-        success_msg="media ${cya}$media${rst} partition 1 successfully mounted on ${cya}$mountpt${rst}"
+        part="$(losetup -nO name -j "$media")"
     else
         echo "file not found: $media"
         exit 4
@@ -261,7 +260,7 @@ mount_media() {
         exit 3
     fi
 
-    echo "$success_msg"
+    echo "partition ${cya}$part${rst} successfully mounted on ${cya}$mountpt${rst}"
 }
 
 check_mount_only() {
@@ -314,24 +313,6 @@ check_mount_only() {
 
     exit 0
 }
-
-# ensure inner mount points get cleaned up
-on_exit() {
-    if mountpoint -q "$mountpt"; then
-        mountpoint -q "$mountpt/var/cache" && umount "$mountpt/var/cache"
-        mountpoint -q "$mountpt/var/lib/apt/lists" && umount "$mountpt/var/lib/apt/lists"
-
-        read -p "$mountpt is still mounted, unmount? <Y/n> " yn
-        if [ -z "$yn" -o "$yn" = 'y' -o "$yn" = 'Y' -o "$yn" = 'yes' -o "$yn" = 'Yes' ]; then
-            echo "unmounting $mountpt"
-            umount "$mountpt"
-            sync
-            rm -rf "$mountpt"
-        fi
-    fi
-}
-mountpt='rootfs'
-trap on_exit EXIT INT QUIT ABRT TERM
 
 file_fstab() {
     local uuid="$1"
@@ -417,7 +398,6 @@ is_param() {
     return 1
 }
 
-# check if debian package is installed
 check_installed() {
     local item todo
     for item in "$@"; do
@@ -445,6 +425,24 @@ blu='\033[34m'
 mag='\033[35m'
 cya='\033[36m'
 h1="${blu}==>${rst} ${bld}"
+
+# ensure inner mount points get cleaned up
+on_exit() {
+    if mountpoint -q "$mountpt"; then
+        mountpoint -q "$mountpt/var/cache" && umount "$mountpt/var/cache"
+        mountpoint -q "$mountpt/var/lib/apt/lists" && umount "$mountpt/var/lib/apt/lists"
+
+        read -p "$mountpt is still mounted, unmount? <Y/n> " yn
+        if [ -z "$yn" -o "$yn" = 'y' -o "$yn" = 'Y' -o "$yn" = 'yes' -o "$yn" = 'Yes' ]; then
+            echo "unmounting $mountpt"
+            umount "$mountpt"
+            sync
+            rm -rf "$mountpt"
+        fi
+    fi
+}
+mountpt='rootfs'
+trap on_exit EXIT INT QUIT ABRT TERM
 
 if [ 0 -ne $(id -u) ]; then
     echo 'this script must be run as root'
