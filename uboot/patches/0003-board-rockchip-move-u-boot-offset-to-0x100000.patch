@@ -1,7 +1,7 @@
-From b4d339bf398d63056587362d2c07087261e4fea6 Mon Sep 17 00:00:00 2001
+From 283b44f557ddf467ebaef0e0dcaebec4ff5b416b Mon Sep 17 00:00:00 2001
 From: John Clark <inindev@gmail.com>
 Date: Thu, 21 Dec 2023 15:41:27 +0000
-Subject: [PATCH 1/2] board: rockchip: move u-boot offset to 0x100000
+Subject: [PATCH 3/7] board: rockchip: move u-boot offset to 0x100000
 
 Signed-off-by: John Clark <inindev@gmail.com>
 ---

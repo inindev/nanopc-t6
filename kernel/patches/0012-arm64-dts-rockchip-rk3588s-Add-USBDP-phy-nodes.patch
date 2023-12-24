@@ -1,7 +1,7 @@
-From 3340de8fc3f470ddb9a4439a9b6d5ae0612b4b00 Mon Sep 17 00:00:00 2001
+From 14734981aedd1f542ee0ce9af45035f3f808c6d2 Mon Sep 17 00:00:00 2001
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 Date: Tue, 25 Apr 2023 17:49:04 +0200
-Subject: [PATCH 12/37] arm64: dts: rockchip: rk3588s: Add USBDP phy nodes
+Subject: [PATCH 12/40] arm64: dts: rockchip: rk3588s: Add USBDP phy nodes
 
 Add both USB3-Displayport PHYs from RK3588.
 

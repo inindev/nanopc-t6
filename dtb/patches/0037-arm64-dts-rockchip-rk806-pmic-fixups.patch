@@ -1,7 +1,7 @@
-From 5db85a02a66c0fbcda6c042b49277caefff694ed Mon Sep 17 00:00:00 2001
+From b5db858394cfba00c68e680b91cad49d31cc7f7d Mon Sep 17 00:00:00 2001
 From: John Clark <inindev@gmail.com>
 Date: Thu, 21 Dec 2023 16:04:50 +0000
-Subject: [PATCH 37/37] arm64: dts: rockchip: rk806 pmic fixups
+Subject: [PATCH 37/40] arm64: dts: rockchip: rk806 pmic fixups
 
 Signed-off-by: John Clark <inindev@gmail.com>
 ---

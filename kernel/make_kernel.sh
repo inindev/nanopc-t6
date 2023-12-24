@@ -19,6 +19,11 @@ config_fixups() {
     echo 'CONFIG_RTW88_8723DE=m' >> "$lpath/arch/arm64/configs/defconfig"
     echo 'CONFIG_RTW88_8821CE=m' >> "$lpath/arch/arm64/configs/defconfig"
 
+    # enable rockchip usb3
+    echo 'CONFIG_CROS_EC_TYPEC=m' >> "$lpath/arch/arm64/configs/defconfig"
+    echo 'CONFIG_CROS_TYPEC_SWITCH=m' >> "$lpath/arch/arm64/configs/defconfig"
+    echo 'CONFIG_PHY_ROCKCHIP_USBDP=y' >> "$lpath/arch/arm64/configs/defconfig"
+
     #echo 6 > "$lpath/.version"
 }
 

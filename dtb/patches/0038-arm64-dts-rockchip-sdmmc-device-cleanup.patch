@@ -1,0 +1,74 @@
+From 7cc1de7710afdedeb50867575bf9d7541d947f91 Mon Sep 17 00:00:00 2001
+From: John Clark <inindev@gmail.com>
+Date: Sun, 24 Dec 2023 02:14:21 +0000
+Subject: [PATCH 38/40] arm64: dts: rockchip: sdmmc device cleanup
+
+Signed-off-by: John Clark <inindev@gmail.com>
+---
+ .../boot/dts/rockchip/rk3588-nanopc-t6.dts    | 30 ++++++++++++++++---
+ 1 file changed, 26 insertions(+), 4 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dts b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dts
+index 4332b0793..b691e0323 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dts
+@@ -160,6 +160,20 @@ vcc3v3_pcie30: vcc3v3-pcie30-regulator {
+ 		regulator-max-microvolt = <3300000>;
+ 		vin-supply = <&vcc5v0_sys>;
+ 	};
++
++	vcc3v3_sd_s0: vcc3v3-sd-s0-regulator {
++		compatible = "regulator-fixed";
++		enable-active-high;
++		gpio = <&gpio4 RK_PB4 GPIO_ACTIVE_HIGH>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&sd_s0_pwren>;
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-max-microvolt = <3000000>;
++		regulator-min-microvolt = <3000000>;
++		regulator-name = "vcc3v3_sd_s0";
++		vin-supply = <&vcc_3v3_s3>;
++	};
+ };
+ 
+ &combphy0_ps {
+@@ -504,6 +518,12 @@ pcie_m2_1_pwren: pcie-m21-pwren {
+ 		};
+ 	};
+ 
++	sdmmc {
++		sd_s0_pwren: sd-s0-pwren {
++			rockchip,pins = <4 RK_PA5 RK_FUNC_GPIO &pcfg_pull_down>;
++		};
++	};
++
+ 	usb {
+ 		typec5v_pwren: typec5v-pwren {
+ 			rockchip,pins = <1 RK_PD2 RK_FUNC_GPIO &pcfg_pull_none>;
+@@ -536,16 +556,18 @@ &sdhci {
+ 	status = "okay";
+ };
+ 
++
+ &sdmmc {
+-	max-frequency = <200000000>;
+-	no-sdio;
+-	no-mmc;
+ 	bus-width = <4>;
+ 	cap-mmc-highspeed;
+ 	cap-sd-highspeed;
++	cd-gpios = <&gpio0 RK_PA4 GPIO_ACTIVE_LOW>;
+ 	disable-wp;
++	max-frequency = <150000000>;
++	no-mmc;
++	no-sdio;
+ 	sd-uhs-sdr104;
+-	vmmc-supply = <&vcc_3v3_s3>;
++	vmmc-supply = <&vcc3v3_sd_s0>;
+ 	vqmmc-supply = <&vccio_sd_s0>;
+ 	status = "okay";
+ };
+-- 
+2.43.0
+

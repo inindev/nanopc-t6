@@ -1,7 +1,7 @@
-From fb5eb96e4f3b90e90999372dfc9e7959dd2feabf Mon Sep 17 00:00:00 2001
+From 3587e4891f329a872002f5120d769a80d66f544b Mon Sep 17 00:00:00 2001
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 Date: Mon, 6 Nov 2023 17:34:54 +0100
-Subject: [PATCH 33/37] arm64: dts: rockchip: add HDMI support to rk3588-evb1
+Subject: [PATCH 33/40] arm64: dts: rockchip: add HDMI support to rk3588-evb1
 
 Enable all bits required for HDMI output on Rockchip RK3588 EVB1.
 

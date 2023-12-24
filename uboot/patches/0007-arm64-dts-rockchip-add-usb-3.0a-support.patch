@@ -1,0 +1,97 @@
+From 68f5ada926354d57d4bf1a0b8cf0ac1bb8b9ffae Mon Sep 17 00:00:00 2001
+From: John Clark <inindev@gmail.com>
+Date: Sun, 24 Dec 2023 02:58:45 +0000
+Subject: [PATCH 7/7] arm64: dts: rockchip: add usb 3.0a support
+
+Signed-off-by: John Clark <inindev@gmail.com>
+---
+ arch/arm/dts/rk3588-nanopc-t6.dts | 41 +++++++++++++++++++++++++++++--
+ 1 file changed, 39 insertions(+), 2 deletions(-)
+
+diff --git a/arch/arm/dts/rk3588-nanopc-t6.dts b/arch/arm/dts/rk3588-nanopc-t6.dts
+index 14887487bb..abffa30a51 100644
+--- a/arch/arm/dts/rk3588-nanopc-t6.dts
++++ b/arch/arm/dts/rk3588-nanopc-t6.dts
+@@ -163,6 +163,18 @@
+ 		vin-supply = <&vcc_3v3_s3>;
+ 	};
+ 
++	vcc5v0_host_30: vcc5v0-host-30 {
++		compatible = "regulator-fixed";
++		enable-active-high;
++		gpio = <&gpio4 RK_PB0 GPIO_ACTIVE_HIGH>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&vcc5v0_host30_pwren>;
++		regulator-min-microvolt = <5000000>;
++		regulator-max-microvolt = <5000000>;
++		regulator-name = "vcc5v0_host_30";
++		vin-supply = <&vcc5v0_sys>;
++	};
++
+ 	vbus5v0_typec: vbus5v0-typec-regulator {
+ 		compatible = "regulator-fixed";
+ 		enable-active-high;
+@@ -533,6 +545,10 @@
+ 		usbc0_int: usbc0-int {
+ 			rockchip,pins = <0 RK_PD3 RK_FUNC_GPIO &pcfg_pull_up>;
+ 		};
++
++		vcc5v0_host30_pwren: vcc5v0-host30-pwren {
++			rockchip,pins = <4 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
+ 	};
+ };
+ 
+@@ -909,11 +925,12 @@
+ 	status = "okay";
+ };
+ 
+-&u2phy2_host {
++&u2phy1 {
+ 	status = "okay";
+ };
+ 
+-&u2phy3_host {
++&u2phy1_otg {
++	phy-supply = <&vcc5v0_host_30>;
+ 	status = "okay";
+ };
+ 
+@@ -921,10 +938,26 @@
+ 	status = "okay";
+ };
+ 
++&u2phy2_host {
++	status = "okay";
++};
++
+ &u2phy3 {
+ 	status = "okay";
+ };
+ 
++&u2phy3_host {
++	status = "okay";
++};
++
++&usbdp_phy1 {
++	status = "okay";
++};
++
++&usbdp_phy1_u3 {
++	status = "okay";
++};
++
+ &usb_host0_ehci {
+ 	status = "okay";
+ };
+@@ -940,3 +973,7 @@
+ &usb_host1_ohci {
+ 	status = "okay";
+ };
++
++&usb_host1_xhci {
++	status = "okay";
++};
+-- 
+2.43.0
+
