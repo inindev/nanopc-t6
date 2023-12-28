@@ -1,0 +1,62 @@
+From b884825313f88921f56992a83d6b8d1193a0959c Mon Sep 17 00:00:00 2001
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+Date: Tue, 25 Jul 2023 17:18:17 +0200
+Subject: [PATCH 09/28] arm64: dts: rockchip: rk3588-rock5b: add lower USB3
+ port
+
+Enable full support (XHCI, EHCI, OHCI) for the lower USB3 port from
+Radxa Rock 5 Model B.
+
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
+ arch/arm/dts/rk3588-rock-5b.dts | 20 ++++++++++++++++++++
+ 1 file changed, 20 insertions(+)
+
+diff --git a/arch/arm/dts/rk3588-rock-5b.dts b/arch/arm/dts/rk3588-rock-5b.dts
+index 61b937beca..bd38c67b6c 100644
+--- a/arch/arm/dts/rk3588-rock-5b.dts
++++ b/arch/arm/dts/rk3588-rock-5b.dts
+@@ -735,6 +735,14 @@
+ 	status = "okay";
+ };
+ 
++&u2phy1 {
++	status = "okay";
++};
++
++&u2phy1_otg {
++	status = "okay";
++};
++
+ &u2phy2 {
+ 	status = "okay";
+ };
+@@ -754,6 +762,14 @@
+ 	status = "okay";
+ };
+ 
++&usbdp_phy1 {
++	status = "okay";
++};
++
++&usbdp_phy1_u3 {
++	status = "okay";
++};
++
+ &usb_host0_ehci {
+ 	status = "okay";
+ };
+@@ -770,6 +786,10 @@
+ 	status = "okay";
+ };
+ 
++&usb_host1_xhci {
++	status = "okay";
++};
++
+ &usb_host2_xhci {
+ 	status = "okay";
+ };
+-- 
+2.43.0
+

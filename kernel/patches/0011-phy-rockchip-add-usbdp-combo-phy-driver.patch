@@ -1,7 +1,7 @@
 From 4069d4fb7c7da7064c372438a0d1ae0448ed9d84 Mon Sep 17 00:00:00 2001
 From: Frank Wang <frank.wang@rock-chips.com>
 Date: Tue, 25 Apr 2023 15:55:54 +0200
-Subject: [PATCH 11/40] phy: rockchip: add usbdp combo phy driver
+Subject: [PATCH 11/44] phy: rockchip: add usbdp combo phy driver
 
 This adds a new USBDP combo PHY with Samsung IP block driver.
 

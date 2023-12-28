@@ -1,7 +1,7 @@
 From 0a689ab2e1500932a9e94896a04f87f1a90c7066 Mon Sep 17 00:00:00 2001
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 Date: Fri, 10 Nov 2023 00:40:54 +0200
-Subject: [PATCH 34/40] arm64: defconfig: Enable Rockchip Samsung HDMI/DP Combo
+Subject: [PATCH 34/44] arm64: defconfig: Enable Rockchip Samsung HDMI/DP Combo
  PHY
 
 Enable support for the Rockchip HDMI/DP Combo PHY based on a Samsung IP

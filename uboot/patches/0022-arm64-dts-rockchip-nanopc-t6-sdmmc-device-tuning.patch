@@ -1,18 +1,24 @@
-From 1bf1935bae72cb6fb9425fbe1005f019b3c3e0ac Mon Sep 17 00:00:00 2001
+From 5768d16e27ee3b3da17b7bd0c5742e32278c89db Mon Sep 17 00:00:00 2001
 From: John Clark <inindev@gmail.com>
 Date: Sun, 24 Dec 2023 02:14:21 +0000
-Subject: [PATCH 5/7] arm64: dts: rockchip: sdmmc device cleanup
+Subject: [PATCH 22/28] arm64: dts: rockchip: nanopc-t6 sdmmc device tuning
+
+1) sdmmc on the nanopc-t6 is powered by vcc3v3_sd_s0, not vcc_3v3_s3
+   add the supply vcc3v3_sd_s0, and control it with gpio4_a5
+2) add the card detection property gpio0_a4
+3) drop max-frequency = <200000000> as it is already defined in rk3588s.dtsi
+4) order no-sdio & no-mmc properties while we are here
 
 Signed-off-by: John Clark <inindev@gmail.com>
 ---
- arch/arm/dts/rk3588-nanopc-t6.dts | 31 +++++++++++++++++++++++++++----
- 1 file changed, 27 insertions(+), 4 deletions(-)
+ arch/arm/dts/rk3588-nanopc-t6.dts | 27 +++++++++++++++++++++++----
+ 1 file changed, 23 insertions(+), 4 deletions(-)
 
 diff --git a/arch/arm/dts/rk3588-nanopc-t6.dts b/arch/arm/dts/rk3588-nanopc-t6.dts
-index f881add166..7f77e00084 100644
+index 25e59e4f6e..98165fce68 100644
 --- a/arch/arm/dts/rk3588-nanopc-t6.dts
 +++ b/arch/arm/dts/rk3588-nanopc-t6.dts
-@@ -160,6 +160,20 @@
+@@ -160,6 +160,19 @@
  		regulator-max-microvolt = <3300000>;
  		vin-supply = <&vcc5v0_sys>;
  	};
@@ -20,24 +26,22 @@ index f881add166..7f77e00084 100644
 +	vcc3v3_sd_s0: vcc3v3-sd-s0-regulator {
 +		compatible = "regulator-fixed";
 +		enable-active-high;
-+		gpio = <&gpio4 RK_PB4 GPIO_ACTIVE_HIGH>;
++		gpio = <&gpio4 RK_PA5 GPIO_ACTIVE_HIGH>;
 +		pinctrl-names = "default";
 +		pinctrl-0 = <&sd_s0_pwren>;
-+		regulator-always-on;
 +		regulator-boot-on;
-+		regulator-max-microvolt = <3000000>;
-+		regulator-min-microvolt = <3000000>;
++		regulator-max-microvolt = <3300000>;
++		regulator-min-microvolt = <3300000>;
 +		regulator-name = "vcc3v3_sd_s0";
 +		vin-supply = <&vcc_3v3_s3>;
 +	};
  };
  
  &combphy0_ps {
-@@ -504,6 +518,13 @@
+@@ -504,6 +517,12 @@
  		};
  	};
  
-+
 +	sdmmc {
 +		sd_s0_pwren: sd-s0-pwren {
 +			rockchip,pins = <4 RK_PA5 RK_FUNC_GPIO &pcfg_pull_down>;
@@ -47,11 +51,9 @@ index f881add166..7f77e00084 100644
  	usb {
  		typec5v_pwren: typec5v-pwren {
  			rockchip,pins = <1 RK_PD2 RK_FUNC_GPIO &pcfg_pull_none>;
-@@ -536,16 +557,18 @@
- 	status = "okay";
+@@ -537,15 +556,15 @@
  };
  
-+
  &sdmmc {
 -	max-frequency = <200000000>;
 -	no-sdio;
@@ -61,7 +63,6 @@ index f881add166..7f77e00084 100644
  	cap-sd-highspeed;
 +	cd-gpios = <&gpio0 RK_PA4 GPIO_ACTIVE_LOW>;
  	disable-wp;
-+	max-frequency = <150000000>;
 +	no-mmc;
 +	no-sdio;
  	sd-uhs-sdr104;

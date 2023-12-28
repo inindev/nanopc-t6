@@ -1,7 +1,7 @@
-From 68f5ada926354d57d4bf1a0b8cf0ac1bb8b9ffae Mon Sep 17 00:00:00 2001
+From 45c16dfab3e03d3e6a66435dbdf7497fad0fd376 Mon Sep 17 00:00:00 2001
 From: John Clark <inindev@gmail.com>
 Date: Sun, 24 Dec 2023 02:58:45 +0000
-Subject: [PATCH 7/7] arm64: dts: rockchip: add usb 3.0a support
+Subject: [PATCH 24/28] arm64: dts: rockchip: add usb 3.0a support
 
 Signed-off-by: John Clark <inindev@gmail.com>
 ---
@@ -9,10 +9,10 @@ Signed-off-by: John Clark <inindev@gmail.com>
  1 file changed, 39 insertions(+), 2 deletions(-)
 
 diff --git a/arch/arm/dts/rk3588-nanopc-t6.dts b/arch/arm/dts/rk3588-nanopc-t6.dts
-index 14887487bb..abffa30a51 100644
+index 002cbfb151..4a09003e66 100644
 --- a/arch/arm/dts/rk3588-nanopc-t6.dts
 +++ b/arch/arm/dts/rk3588-nanopc-t6.dts
-@@ -163,6 +163,18 @@
+@@ -162,6 +162,18 @@
  		vin-supply = <&vcc_3v3_s3>;
  	};
  
@@ -31,7 +31,7 @@ index 14887487bb..abffa30a51 100644
  	vbus5v0_typec: vbus5v0-typec-regulator {
  		compatible = "regulator-fixed";
  		enable-active-high;
-@@ -533,6 +545,10 @@
+@@ -531,6 +543,10 @@
  		usbc0_int: usbc0-int {
  			rockchip,pins = <0 RK_PD3 RK_FUNC_GPIO &pcfg_pull_up>;
  		};
@@ -42,7 +42,7 @@ index 14887487bb..abffa30a51 100644
  	};
  };
  
-@@ -909,11 +925,12 @@
+@@ -904,11 +920,12 @@
  	status = "okay";
  };
  
@@ -57,7 +57,7 @@ index 14887487bb..abffa30a51 100644
  	status = "okay";
  };
  
-@@ -921,10 +938,26 @@
+@@ -916,10 +933,26 @@
  	status = "okay";
  };
  
@@ -84,7 +84,7 @@ index 14887487bb..abffa30a51 100644
  &usb_host0_ehci {
  	status = "okay";
  };
-@@ -940,3 +973,7 @@
+@@ -935,3 +968,7 @@
  &usb_host1_ohci {
  	status = "okay";
  };

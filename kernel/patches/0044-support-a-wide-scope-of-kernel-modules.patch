@@ -1,7 +1,7 @@
-From d6b7870d5b574a5b30f5fc0af357b959aa8ce441 Mon Sep 17 00:00:00 2001
+From eb5f02f604db2d4899041b42027b1f87d6b29699 Mon Sep 17 00:00:00 2001
 From: John Clark <inindev@gmail.com>
 Date: Tue, 12 Dec 2023 13:09:15 +0000
-Subject: [PATCH 35/40] support a wider array of kernel features
+Subject: [PATCH 44/44] support a wide scope of kernel modules
 
 Signed-off-by: John Clark <inindev@gmail.com>
 ---

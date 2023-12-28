@@ -1,7 +1,7 @@
-From 571adad931d6ff12ba5a99a8866585f566a145cd Mon Sep 17 00:00:00 2001
+From 761a3c5b179c2db520384a4b5847bc50135a823a Mon Sep 17 00:00:00 2001
 From: John Clark <inindev@gmail.com>
 Date: Sun, 24 Dec 2023 02:37:30 +0000
-Subject: [PATCH 39/40] arm64: dts: rockchip: regulator cleanup
+Subject: [PATCH 41/44] arm64: dts: rockchip: regulator cleanup
 
 Signed-off-by: John Clark <inindev@gmail.com>
 ---
@@ -9,7 +9,7 @@ Signed-off-by: John Clark <inindev@gmail.com>
  1 file changed, 22 insertions(+), 22 deletions(-)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dts b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dts
-index b691e0323..44c61f4aa 100644
+index 98165fce6..002cbfb15 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dts
 @@ -76,76 +76,64 @@ simple-audio-card,codec {
@@ -107,7 +107,7 @@ index b691e0323..44c61f4aa 100644
  		vin-supply = <&vcc5v0_sys>;
  	};
  
-@@ -174,6 +162,18 @@ vcc3v3_sd_s0: vcc3v3-sd-s0-regulator {
+@@ -173,6 +161,18 @@ vcc3v3_sd_s0: vcc3v3-sd-s0-regulator {
  		regulator-name = "vcc3v3_sd_s0";
  		vin-supply = <&vcc_3v3_s3>;
  	};
@@ -126,7 +126,7 @@ index b691e0323..44c61f4aa 100644
  };
  
  &combphy0_ps {
-@@ -441,7 +441,7 @@ i2s0_8ch_p0_0: endpoint {
+@@ -440,7 +440,7 @@ i2s0_8ch_p0_0: endpoint {
  
  &pcie2x1l0 {
  	reset-gpios = <&gpio4 RK_PB3 GPIO_ACTIVE_HIGH>;
@@ -135,7 +135,7 @@ index b691e0323..44c61f4aa 100644
  	pinctrl-names = "default";
  	pinctrl-0 = <&pcie2_0_rst>;
  	status = "okay";
-@@ -457,7 +457,7 @@ &pcie2x1l1 {
+@@ -456,7 +456,7 @@ &pcie2x1l1 {
  
  &pcie2x1l2 {
  	reset-gpios = <&gpio4 RK_PA4 GPIO_ACTIVE_HIGH>;

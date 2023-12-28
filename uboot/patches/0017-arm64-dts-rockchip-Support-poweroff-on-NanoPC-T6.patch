@@ -1,0 +1,31 @@
+From 6c33347068e26638c939d8238424f1ddae9862cb Mon Sep 17 00:00:00 2001
+From: Hugh Cole-Baker <sigmaris@gmail.com>
+Date: Sat, 16 Dec 2023 21:21:34 +0000
+Subject: [PATCH 17/28] arm64: dts: rockchip: Support poweroff on NanoPC-T6
+
+The RK806 on the NanoPC-T6 can be used to power on/off the whole board.
+Mark it as the system power controller.
+
+Signed-off-by: Hugh Cole-Baker <sigmaris@gmail.com>
+Link: https://lore.kernel.org/r/20231216212134.23314-1-sigmaris@gmail.com
+Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+---
+ arch/arm/dts/rk3588-nanopc-t6.dts | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/arch/arm/dts/rk3588-nanopc-t6.dts b/arch/arm/dts/rk3588-nanopc-t6.dts
+index 97af4f9128..1b7f31df3e 100644
+--- a/arch/arm/dts/rk3588-nanopc-t6.dts
++++ b/arch/arm/dts/rk3588-nanopc-t6.dts
+@@ -570,6 +570,8 @@
+ 		pinctrl-0 = <&pmic_pins>, <&rk806_dvs1_null>,
+ 			    <&rk806_dvs2_null>, <&rk806_dvs3_null>;
+ 
++		system-power-controller;
++
+ 		vcc1-supply = <&vcc4v0_sys>;
+ 		vcc2-supply = <&vcc4v0_sys>;
+ 		vcc3-supply = <&vcc4v0_sys>;
+-- 
+2.43.0
+

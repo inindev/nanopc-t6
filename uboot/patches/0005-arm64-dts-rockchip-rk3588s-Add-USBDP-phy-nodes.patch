@@ -1,7 +1,7 @@
-From 94262558fd5b05ddcbe843c1dee7bc1bc87f4c51 Mon Sep 17 00:00:00 2001
+From d4d75774e1efb4cb17b1e5e6639ff495020770e5 Mon Sep 17 00:00:00 2001
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 Date: Tue, 25 Apr 2023 17:49:04 +0200
-Subject: [PATCH 1/7] arm64: dts: rockchip: rk3588s: Add USBDP phy nodes
+Subject: [PATCH 05/28] arm64: dts: rockchip: rk3588s: Add USBDP phy nodes
 
 Add both USB3-Displayport PHYs from RK3588.
 
@@ -92,10 +92,10 @@ index 5519c1430c..c26288ec75 100644
  		compatible = "rockchip,rk3588-naneng-combphy";
  		reg = <0x0 0xfee10000 0x0 0x100>;
 diff --git a/arch/arm/dts/rk3588s.dtsi b/arch/arm/dts/rk3588s.dtsi
-index 61a9a11c3b..22dc1b47f6 100644
+index f545e2ee67..0eedb8fdb0 100644
 --- a/arch/arm/dts/rk3588s.dtsi
 +++ b/arch/arm/dts/rk3588s.dtsi
-@@ -463,6 +463,37 @@
+@@ -484,6 +484,37 @@
  		reg = <0x0 0xfd5c4000 0x0 0x100>;
  	};
  
@@ -133,7 +133,7 @@ index 61a9a11c3b..22dc1b47f6 100644
  	usb2phy2_grf: syscon@fd5d8000 {
  		compatible = "rockchip,rk3588-usb2phy-grf", "syscon", "simple-mfd";
  		reg = <0x0 0xfd5d8000 0x0 0x4000>;
-@@ -488,6 +519,17 @@
+@@ -509,6 +540,17 @@
  		};
  	};
  
@@ -151,7 +151,7 @@ index 61a9a11c3b..22dc1b47f6 100644
  	usb2phy3_grf: syscon@fd5dc000 {
  		compatible = "rockchip,rk3588-usb2phy-grf", "syscon", "simple-mfd";
  		reg = <0x0 0xfd5dc000 0x0 0x4000>;
-@@ -2208,6 +2250,37 @@
+@@ -2229,6 +2271,37 @@
  		#dma-cells = <1>;
  	};
  

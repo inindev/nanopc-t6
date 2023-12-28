@@ -1,0 +1,64 @@
+From 30273a50d0a35a61a7d398e2052692d0578934fe Mon Sep 17 00:00:00 2001
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+Date: Tue, 25 Jul 2023 16:30:46 +0200
+Subject: [PATCH 08/28] arm64: dts: rockchip: rk3588s-rock5a: add upper USB3
+ port
+
+Enable full support (XHCI, EHCI, OHCI) for the upper USB3 port from
+Radxa Rock 5 Model A.
+
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
+ arch/arm/dts/rk3588s-rock-5a.dts | 22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
+
+diff --git a/arch/arm/dts/rk3588s-rock-5a.dts b/arch/arm/dts/rk3588s-rock-5a.dts
+index 6fb0329457..a6ec5e770e 100644
+--- a/arch/arm/dts/rk3588s-rock-5a.dts
++++ b/arch/arm/dts/rk3588s-rock-5a.dts
+@@ -698,6 +698,14 @@
+ 	};
+ };
+ 
++&u2phy0 {
++	status = "okay";
++};
++
++&u2phy0_otg {
++	status = "okay";
++};
++
+ &u2phy2 {
+ 	status = "okay";
+ };
+@@ -721,6 +729,15 @@
+ 	status = "okay";
+ };
+ 
++&usbdp_phy0 {
++	status = "okay";
++	rockchip,dp-lane-mux = <2 3>;
++};
++
++&usbdp_phy0_u3 {
++	status = "okay";
++};
++
+ &usb_host0_ehci {
+ 	status = "okay";
+ 	pinctrl-names = "default";
+@@ -731,6 +748,11 @@
+ 	status = "okay";
+ };
+ 
++&usb_host0_xhci {
++	dr_mode = "host";
++	status = "okay";
++};
++
+ &usb_host1_ehci {
+ 	status = "okay";
+ };
+-- 
+2.43.0
+
